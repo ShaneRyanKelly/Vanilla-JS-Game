@@ -1,6 +1,16 @@
-import buttons from '../ui/buttons.json' assert { type: "json"};
+import buttons from '../ui/buttons.json' assert { type: "json" };
+import scenes from '../ui/scenes.json' assert { type: "json" };
 console.log("Javascript working.");
+
+var currentScene = "demo";
+var sceneData;
+
 main();
+
+function displayScene(){
+    sceneData = scenes[currentScene];
+    getId("title").innerHTML = sceneData["title"];
+}
 
 function getCoreActionBar(){
     var actionBar = getId("actionBar");
@@ -19,6 +29,7 @@ function getJson(path, key){
 function main(){
     var mainElement = getId("main");
     console.log(buttons);
-    mainElement.innerHTML = "<p>Dynamically Generated Text!";
+    mainElement.append("Dynamically Generated Text!");
+    displayScene();
     getCoreActionBar();
 }
