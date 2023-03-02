@@ -1,5 +1,5 @@
-import buttons from '../ui/buttons.json' assert { type: "json" };
-import scenes from '../ui/scenes.json' assert { type: "json" };
+import buttons from '../data/buttons.json' assert { type: "json" };
+import scenes from '../data/scenes.json' assert { type: "json" };
 console.log("Javascript working.");
 
 var currentScene = "demo";
@@ -9,7 +9,10 @@ main();
 
 function displayScene(){
     sceneData = scenes[currentScene];
-    getId("title").innerHTML = sceneData["title"];
+    getId("textBox").innerHTML = "";
+    for ( var element in sceneData ){
+        getId("textBox").innerHTML += sceneData[element];
+    }
 }
 
 function getCoreActionBar(){
