@@ -3,7 +3,11 @@ body {
     font-size: 1.5em;
     cursor: default;
 }
-.info {
+#infoBox {
+    background-color: black;
+    color: aliceblue;
+}
+.inspect {
     cursor: help;
     background-color: coral;
 }

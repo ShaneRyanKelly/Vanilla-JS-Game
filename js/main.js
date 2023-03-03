@@ -1,24 +1,42 @@
 import buttons from '../data/buttons.json' assert { type: "json" };
 import scenes from '../data/scenes.json' assert { type: "json" };
+import infos from '../data/info.json' assert { type: "json" };
 console.log("Javascript working.");
 
 var currentScene = "demo";
-var sceneData;
+var currentTarget = "";
+const classTypes = [ "inspect" ];
 
 main();
 
-function displayScene(){
-    sceneData = scenes[currentScene];
-    getId("textBox").innerHTML = "";
-    for ( var element in sceneData ){
-        getId("textBox").innerHTML += sceneData[element];
+function createEventListeners(){
+    var elements;
+    for ( var i = 0; i < classTypes.length; i++ ){
+        elements = document.getElementsByClassName(classTypes[i]);
+        for (var i = 0; i < elements.length; i++){
+            elements[i].addEventListener("click", displayInfo);
+        }
     }
 }
 
-function getCoreActionBar(){
+function displayInfo(event){
+    currentTarget = event.target.id;
+    getId("infoBox").innerHTML = infos[currentTarget]["description"];
+}
+
+function displayScene(){
+    var descriptions = scenes[currentScene]["description"];
+    getId("textBox").innerHTML = "";
+    for ( var paragraph in descriptions ){
+        getId("textBox").innerHTML += descriptions[paragraph];
+    }
+    createEventListeners();
+}
+
+function getActionBar(newBar){
     var actionBar = getId("actionBar");
-    console.log(actionBar);
-    actionBar.innerHTML = buttons["core"];
+    actionBar.innerHTML = "";
+    actionBar.innerHTML = buttons[newBar];
 }
 
 function getId(newId){
@@ -32,7 +50,6 @@ function getJson(path, key){
 function main(){
     var mainElement = getId("main");
     console.log(buttons);
-    mainElement.append("Dynamically Generated Text!");
     displayScene();
-    getCoreActionBar();
+    getActionBar("core");
 }

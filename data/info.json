@@ -1,0 +1,6 @@
+{
+    "demoInspect": {
+        "description": "A sample inspectable element.",
+        "info": "Elements highlighted in coral may be inspected to get further info."
+    }
+}
