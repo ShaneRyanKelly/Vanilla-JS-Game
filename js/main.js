@@ -5,23 +5,33 @@ console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect" ];
+const classTypes = [ "inspect", "interact" ];
 
 main();
+
+function createActionListeners(className){
+    var elements = document.getElementsByClassName("actionButton");
+    for (var i = 0; i < elements.length; i++){
+        elements[i].addEventListener("click", doAction);
+    }
+}
 
 function createEventListeners(){
     var elements;
     for ( var i = 0; i < classTypes.length; i++ ){
         elements = document.getElementsByClassName(classTypes[i]);
-        for (var i = 0; i < elements.length; i++){
-            elements[i].addEventListener("click", displayInfo);
+        console.log(i + ": " + classTypes[i]);
+        for (var j = 0; j < elements.length; j++){
+            elements[j].addEventListener("click", displayInfo);
         }
     }
 }
 
 function displayInfo(event){
-    currentTarget = event.target.id;
-    getId("infoBox").innerHTML = infos[currentTarget]["description"];
+    console.log("click");
+    currentTarget = event.target;
+    getActionBar(currentTarget.className);
+    getId("infoBox").innerHTML = infos[currentTarget.id]["description"];
 }
 
 function displayScene(){
@@ -33,23 +43,36 @@ function displayScene(){
     createEventListeners();
 }
 
-function getActionBar(newBar){
+function doAction(event){
+    if (event.target.id = "inspectButton"){
+        showInspect();
+    }
+}
+
+function getActionBar(className){
     var actionBar = getId("actionBar");
     actionBar.innerHTML = "";
-    actionBar.innerHTML = buttons[newBar];
+    actionBar.innerHTML = buttons[className];
+    createActionListeners(className);
+}
+
+function getMainMenuBar(newBar){
+    var menuBar = getId("menuBar");
+    menuBar.innerHTML = "";
+    menuBar.innerHTML = buttons[newBar];
 }
 
 function getId(newId){
     return document.getElementById(newId);
 }
 
-function getJson(path, key){
-    
+function showInspect(){
+    getId("infoBox").innerHTML = infos[currentTarget.id]["info"];
 }
-
+ 
 function main(){
     var mainElement = getId("main");
     console.log(buttons);
     displayScene();
-    getActionBar("core");
+    getMainMenuBar("core");
 }

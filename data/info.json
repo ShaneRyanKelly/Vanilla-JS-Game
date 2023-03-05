@@ -2,5 +2,9 @@
     "demoInspect": {
         "description": "A sample inspectable element.",
         "info": "Elements highlighted in coral may be inspected to get further info."
+    },
+    "demoInteract": {
+        "description": "A sample interactable element.",
+        "info": "Interacting with the object reveals hidden text!"
     }
 }

@@ -1,3 +1,5 @@
 {
-    "core": "<button id='inspect' class='uiButton'>Inspect</button>"
+    "core": "<button id='inventoryButton' class='uiButton'>Inventory</button><button id='equipButton' class='uiButton'>Equip</button><button id='statusButton' class='uiButton'>Status</button><button id='journalButton' class='uiButton'>Journal</button>",
+    "inspect": "<button id='inspectButton' class='actionButton'>Inspect</button>",
+    "interact": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='interactButton' class='actionButton'>Interact</button>"
 }
