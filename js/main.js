@@ -6,10 +6,10 @@ console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect", "interact" ];
+const classTypes = [ "inspect", "interact", "journalButton" ];
 var journal = [];
 
-main();
+document.addEventListener("DOMContentLoaded", main);
 
 function createActionListeners(className){
     var elements = document.getElementsByClassName("actionButton");
@@ -30,11 +30,27 @@ function createEventListeners(){
     }
 }
 
+function createUiListeners(){
+    let uiElements = document.getElementsByClassName("uiButton");
+    for (var i = 0; i < uiElements.length; i++){
+        uiElements[i].addEventListener("click", displayUi)
+    }
+}
+
 function displayInfo(event){
     console.log("click");
     currentTarget = event.target;
     getActionBar(currentTarget.className);
     getId("infoBox").innerHTML = infos[currentTarget.id]["description"];
+}
+
+function displayJournal(){
+    getId("infoBox").innerHTML = "";
+    getId("textBox").innerHTML = "<h1>Journal</h1>"
+    getActionBar("journalButton");
+    for (var i = 0; i < journal.length; i++){
+        getId("textBox").innerHTML += journal[i];
+    }
 }
 
 function displayScene(){
@@ -46,8 +62,20 @@ function displayScene(){
     createEventListeners();
 }
 
+function displayUi(event){
+    var currentTarget = event.target;
+    if (currentTarget.id == "journalButton"){
+        displayJournal();
+    }
+}
+
 function doAction(event){
-    if (event.target.id == "inspectButton"){
+    if (event.target.id == "exitButton"){
+        getId("textBox").innerHTML = "";
+        getId("actionBar").innerHTML = "";
+        displayScene();
+    }
+    else if (event.target.id == "inspectButton"){
         showInspect();
     }
     else if (event.target.id == "interactButton"){
@@ -97,4 +125,5 @@ function main(){
     console.log(buttons);
     displayScene();
     getMainMenuBar("core");
+    createUiListeners();
 }
