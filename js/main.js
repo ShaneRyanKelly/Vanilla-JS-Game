@@ -1,16 +1,19 @@
 import buttons from '../data/buttons.json' assert { type: "json" };
 import scenes from '../data/scenes.json' assert { type: "json" };
 import infos from '../data/info.json' assert { type: "json" };
+import events from '../data/events.json' assert { type: "json"};
 console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
 const classTypes = [ "inspect", "interact" ];
+var journal = [];
 
 main();
 
 function createActionListeners(className){
     var elements = document.getElementsByClassName("actionButton");
+    console.log(elements);
     for (var i = 0; i < elements.length; i++){
         elements[i].addEventListener("click", doAction);
     }
@@ -44,8 +47,11 @@ function displayScene(){
 }
 
 function doAction(event){
-    if (event.target.id = "inspectButton"){
+    if (event.target.id == "inspectButton"){
         showInspect();
+    }
+    else if (event.target.id == "interactButton"){
+        triggerEvent();
     }
 }
 
@@ -68,6 +74,22 @@ function getId(newId){
 
 function showInspect(){
     getId("infoBox").innerHTML = infos[currentTarget.id]["info"];
+}
+
+function triggerEvent(){
+    console.log("event!");
+    console.log(events[currentTarget.id]["scenes"]);
+    var newEvent = events[currentTarget.id];
+
+    for (var i = 0; i < Object.keys(newEvent["scenes"]).length; i++){
+        var scene = newEvent["scenes"][i];
+        var newKey = newEvent["index"][i];
+        var newValue = newEvent["mods"][i]["text"];
+        scenes[scene]["description"][newKey] = newValue;
+    }
+    journal.push(newEvent["journal"]);
+    console.log(journal);
+    displayScene();
 }
  
 function main(){

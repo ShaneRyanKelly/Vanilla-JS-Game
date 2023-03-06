@@ -1,0 +1,23 @@
+{
+    "demoInteract":{
+        "scenes": {
+            "0": "demo",
+            "1": "demo"
+        },
+        "index":{
+            "0": "demoItem",
+            "1": "demoInteract"
+        },
+        "mods":{
+            "0":{
+                "title": "demoAddition",
+                "text": "<p>See, pushing the button generated additional text!</p><p>Beyond just providing a text-based adventure, Jellybean offers a full featured turn-based RPG system, complete with battles, inventory, and a convenient journal to keep track of you progress.</p>"
+            },
+            "1":{
+                "title": "demoInteract",
+                "text": "<p>An interact relies on the event system to modify scenes: events change already existing and create new elements and dialogue to provide new avenues of play.</p>"
+            }
+        },
+        "journal": "Today I began my adventure using Jellybean Game Engine! I interacted with a switch that generated extra text!"
+    }
+}
