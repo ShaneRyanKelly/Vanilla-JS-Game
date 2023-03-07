@@ -4,5 +4,7 @@
     "interact": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='interactButton' class='actionButton'>Interact</button>",
     "inventory": "<button id='exitButton' class='actionButton'>Exit</button>",
     "item": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='pickUpButton' class='actionButton'>Pick Up</button>",
-    "journal": "<button id='exitButton' class='actionButton'>Exit</button>"
+    "journal": "<button id='exitButton' class='actionButton'>Exit</button>",
+    "character": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='talkButton' class='actionButton'>Talk</button>",
+    "dialogue": "button id='exitButton' class='actionButton'>Exit</button>"
 }

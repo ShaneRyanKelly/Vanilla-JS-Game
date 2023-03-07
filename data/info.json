@@ -10,5 +10,9 @@
     "demoItem": {
         "description": "A sample item.",
         "info": "Pick up an item by clicking [PICK UP] on the [ACTION BAR]"
+    },
+    "jellyBean": {
+        "description": "A sample character.",
+        "info": "Jellybean waves."
     }
 }

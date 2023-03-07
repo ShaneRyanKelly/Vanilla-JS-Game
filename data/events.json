@@ -5,12 +5,12 @@
                 "0":{
                     "scene": "demo",
                     "index": "demoAddition",
-                    "text": "<p>See, pushing the switch generated additional text!</p><p>Beyond just providing a text-based adventure, Jellybean offers a full featured turn-based RPG system, complete with battles, inventory, and a convenient journal to keep track of you progress. Click [JOURNAL] on the [MENU BAR] to check it out!</p>"
+                    "text": "<p>See, pushing the switch generated additional text!</p><p>Beyond just providing a text-based adventure, Jellybean offers a full featured turn-based RPG system, complete with [BATTLES], [INVENTORY], and a convenient [JOURNAL] to keep track of you progress. Click [JOURNAL] on the [MENU BAR] to check it out!</p>"
                 },
                 "1":{
                     "scene": "demo",
                     "index": "demoInteract",
-                    "text": "<p>An interact relies on the event system to modify scenes: events change already existing and create new elements and dialogue to provide new avenues of play.</p>"
+                    "text": "<p>An interact relies on the [EVENT] system to modify scenes: [EVENTS] change already existing and create new elements and dialogue to provide new avenues of play.</p>"
                 },
                 "2":{
                     "scene": "demo",
@@ -25,12 +25,17 @@
                 "0":{
                     "scene": "demo",
                     "index": "demoItem",
-                    "text": "<p>The [ITEM] has been added to your [INVENTORY]! Just click [INVENTORY] on the [MENU BAR] to see! Picking up an [ITEM] will also trigger an event. Even picking up a simple [ITEM] can have far reaching consequences!</p>"
+                    "text": "<p>The [ITEM] has been added to your [INVENTORY]! Just click [INVENTORY] on the [MENU BAR] to see! Picking up an [ITEM] will also trigger an [EVENT]. Even picking up a simple [ITEM] can have far reaching consequences!</p>"
                 },
                 "1":{
                     "scene": "demo",
-                    "index": "demoCharacter",
+                    "index": "dialogueSystem",
                     "text": "<p>Jellybean also comes equipped with a full fledged dialogue system!</p>"
+                },
+                "2":{
+                    "scene": "demo",
+                    "index": "demoCharacter",
+                    "text": "<p>[CHARACTERS] contain unique dialogue trees which are modifiable by [EVENTS]. Why not check it out and say 'Hello!' to <span id='jellyBean' class='character'>JB</span>! To talk to a [CHARACTER] click on their name and then click [TALK] on the [ACTION BAR].</p>"
                 }
             },
             "journal": "Today I found a strange [ITEM]. Hopefully I find a use for it some day!"

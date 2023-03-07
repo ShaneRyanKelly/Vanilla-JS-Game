@@ -7,7 +7,7 @@ console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect", "interact", "item" ,"journalButton" ];
+const classTypes = [ "inspect", "interact", "item", "character", "journalButton" ];
 var inventory = [];
 var journal = [];
 
