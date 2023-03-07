@@ -2,13 +2,11 @@ import buttons from '../data/buttons.json' assert { type: "json" };
 import scenes from '../data/scenes.json' assert { type: "json" };
 import infos from '../data/info.json' assert { type: "json" };
 import events from '../data/events.json' assert { type: "json"};
-import items from "../data/items.json" assert { type: "json" };
 console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect", "interact", "item" ,"journalButton" ];
-var inventory = [];
+const classTypes = [ "inspect", "interact", "journalButton" ];
 var journal = [];
 
 document.addEventListener("DOMContentLoaded", main);
@@ -46,20 +44,10 @@ function displayInfo(event){
     getId("infoBox").innerHTML = infos[currentTarget.id]["description"];
 }
 
-function displayInventory(){
-    getId("infoBox").innerHTML = "";
-    getId("textBox").innerHTML = "<h1>Inventory</h1>";
-    getActionBar("inventory");
-    for (const element in inventory){
-        console.log("looping");
-        getId("textBox").innerHTML += "<p id='" + inventory[element]["id"] + "' class='" + inventory[element]["class"] + "'>" + inventory[element]["title"] + " - " + inventory[element]["quantity"] + "</p>";
-    }
-}
-
 function displayJournal(){
     getId("infoBox").innerHTML = "";
     getId("textBox").innerHTML = "<h1>Journal</h1>"
-    getActionBar("journal");
+    getActionBar("journalButton");
     for (var i = 0; i < journal.length; i++){
         getId("textBox").innerHTML += journal[i];
     }
@@ -79,29 +67,20 @@ function displayUi(event){
     if (currentTarget.id == "journalButton"){
         displayJournal();
     }
-    else if (currentTarget.id == "inventoryButton"){
-        displayInventory();
-    }
 }
 
 function doAction(event){
     if (event.target.id == "exitButton"){
         getId("textBox").innerHTML = "";
+        getId("actionBar").innerHTML = "";
         displayScene();
     }
     else if (event.target.id == "inspectButton"){
         showInspect();
     }
     else if (event.target.id == "interactButton"){
-        getId("actionBar").innerHTML = "";
         triggerEvent();
     }
-    else if (event.target.id == "pickUpButton"){
-        getId("actionBar").innerHTML = "";
-        pickUpItem();
-        triggerEvent();
-    }
-    getId("infoBox").innerHTML = "";
 }
 
 function getActionBar(className){
@@ -121,32 +100,14 @@ function getId(newId){
     return document.getElementById(newId);
 }
 
-function hasItem(newItem){
-    for (var i = 0; i < Object.keys(inventory).length; i++){
-        if (inventory[i]["title"] == newItem)
-            return true;
-    }
-    return false;
-}
-
-function pickUpItem(){
-    if (hasItem(currentTarget.id)){
-        inventory[currentTarget.id]["quantity"]++;
-    }
-    else{
-        inventory[currentTarget.id] = items[currentTarget.id];
-        inventory[currentTarget.id]["quantity"]++;
-    }
-    console.log(inventory);
-}
-
 function showInspect(){
     getId("infoBox").innerHTML = infos[currentTarget.id]["info"];
 }
 
 function triggerEvent(){
+    console.log("event!");
+    console.log(events[currentTarget.id]["scenes"]);
     var newEvent = events[currentTarget.id];
-    console.log(currentTarget.id);
 
     for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
         var currentEvent = newEvent["mods"][i];
