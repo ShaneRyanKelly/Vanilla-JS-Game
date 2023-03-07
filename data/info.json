@@ -6,5 +6,9 @@
     "demoInteract": {
         "description": "A sample interactable element.",
         "info": "Interacting with the object reveals hidden text!"
+    },
+    "demoItem": {
+        "description": "A sample item.",
+        "info": "Pick up an item by clicking [PICK UP] on the [ACTION BAR]"
     }
 }

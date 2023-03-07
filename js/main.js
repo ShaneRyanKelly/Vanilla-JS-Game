@@ -109,10 +109,11 @@ function triggerEvent(){
     console.log(events[currentTarget.id]["scenes"]);
     var newEvent = events[currentTarget.id];
 
-    for (var i = 0; i < Object.keys(newEvent["scenes"]).length; i++){
-        var scene = newEvent["scenes"][i];
-        var newKey = newEvent["index"][i];
-        var newValue = newEvent["mods"][i]["text"];
+    for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
+        var currentEvent = newEvent["mods"][i];
+        var scene = currentEvent["scene"];
+        var newKey = currentEvent["index"];
+        var newValue = currentEvent["text"];
         scenes[scene]["description"][newKey] = newValue;
     }
     journal.push(newEvent["journal"]);

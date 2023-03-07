@@ -4,7 +4,7 @@
             "title": "<h1 class='title'>Jellybean Game Engine</h1>",
             "intro": "<p>Welcome to The Jellybean Game Engine!</p>",
             "description": "<p>Jellybean is a new game engine designed to aid in the development of <span id='demoInspect' class='inspect'>text-based adventure role-playing games</span>!</p>",
-            "demoInteract": "<p>Jellybean stories are made up of plain text and interactable elements such as this <span id='demoInteract' class='interact'>switch</span>. To interact with an element simply click on its text and then click [Interact] in the bottom action bar.</p>"
+            "demoInteract": "<p>Jellybean stories are made up of plain text and interactable elements such as this <span id='demoInteract' class='interact'>switch</span>. To interact with an element just click on its text and then click [INTERACT] in the bottom action bar.</p>"
         }
     }
 }
