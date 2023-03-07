@@ -42,8 +42,9 @@ function createUiListeners(){
 function displayInfo(event){
     console.log("click");
     currentTarget = event.target;
+    var id = currentTarget.id.split("_")[0];
     getActionBar(currentTarget.className);
-    getId("infoBox").innerHTML = infos[currentTarget.id]["description"];
+    getId("infoBox").innerHTML = infos[id]["description"];
 }
 
 function displayInventory(){
@@ -130,14 +131,15 @@ function hasItem(newItem){
 }
 
 function pickUpItem(){
-    if (hasItem(currentTarget.id)){
-        inventory[currentTarget.id]["quantity"]++;
+    var id = currentTarget.id.split("_")[0];
+    console.log(id);
+    if (hasItem(id)){
+        inventory[id]["quantity"]++;
     }
     else{
-        inventory[currentTarget.id] = items[currentTarget.id];
-        inventory[currentTarget.id]["quantity"]++;
+        inventory[id] = items[id];
+        inventory[id]["quantity"]++;
     }
-    console.log(inventory);
 }
 
 function showInspect(){
@@ -145,7 +147,7 @@ function showInspect(){
 }
 
 function triggerEvent(){
-    var newEvent = events[currentTarget.id];
+    var newEvent = events[currentScene][currentTarget.id];
     console.log(currentTarget.id);
 
     for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
