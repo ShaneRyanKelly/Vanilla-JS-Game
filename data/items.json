@@ -1,0 +1,8 @@
+{
+    "demoItem": {
+        "id": "demoItem",
+        "title": "Demo Item",
+        "class": "consumable",
+        "quantity": 0
+    }
+}
