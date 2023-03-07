@@ -99,10 +99,10 @@ function doAction(event){
     }
     else if (event.target.id == "pickUpButton"){
         getId("actionBar").innerHTML = "";
+        getId("infoBox").innerHTML = "";
         pickUpItem();
         triggerEvent();
     }
-    getId("infoBox").innerHTML = "";
 }
 
 function getActionBar(className){
@@ -143,7 +143,8 @@ function pickUpItem(){
 }
 
 function showInspect(){
-    getId("infoBox").innerHTML = infos[currentTarget.id]["info"];
+    var id = currentTarget.id.split("_")[0];
+    getId("infoBox").innerHTML = infos[id]["info"];
 }
 
 function triggerEvent(){
