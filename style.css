@@ -10,6 +10,10 @@ body {
 .actionButton {
     background-color: rgb(67, 179, 174);
 }
+.consumable {
+    background-color: rgb(45, 160, 45);
+    cursor: help;
+}
 .inspect {
     cursor: help;
     background-color: coral;

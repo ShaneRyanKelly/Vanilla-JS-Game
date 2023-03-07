@@ -14,9 +14,24 @@
             "2":{
                 "scene": "demo",
                 "index": "demoItem",
-                "text": "<p>During the course of your adventure you will come across many useful items and equipment. To pick up an <span id='demoItem' class='item'>item</span> simply click it's name and then click [PICK UP] on the [ACTION BAR]</p>"
+                "text": "<p>During the course of your adventure you will come across many useful [ITEMS] and [EQUIPMENT]. To pick up an <span id='demoItem' class='item'>item</span> simply click it's name and then click [PICK UP] on the [ACTION BAR]</p>"
             }
         },
         "journal": "<p>Today I began my adventure using Jellybean Game Engine! I interacted with a switch that generated extra text!</p>"
+    },
+    "demoItem":{
+        "mods": {
+            "0":{
+                "scene": "demo",
+                "index": "demoItem",
+                "text": "<p>The [ITEM] has been added to your [INVENTORY]! Just click [INVENTORY] on the [MENU BAR] to see! Picking up an [ITEM] will also trigger an event. Even picking up a simple [ITEM] can have far reaching consequences!</p>"
+            },
+            "1":{
+                "scene": "demo",
+                "index": "demoCharacter",
+                "text": "<p>Jellybean also comes equipped with a full fledged dialogue system!</p>"
+            }
+        },
+        "journal": "Today I found a strange [ITEM]. Hopefully I find a use for it some day!"
     }
 }
