@@ -3,13 +3,15 @@ import scenes from '../data/scenes.json' assert { type: "json" };
 import infos from '../data/info.json' assert { type: "json" };
 import events from '../data/events.json' assert { type: "json"};
 import items from "../data/items.json" assert { type: "json" };
+import characters from "../data/characters.json" assert {type: "json"};
 console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect", "interact", "item", "character", "journalButton" ];
+const classTypes = [ "inspect", "interact", "item", "character", "dialogue", "journalButton" ];
 var inventory = [];
 var journal = [];
+var selectedCharacter;
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -39,10 +41,19 @@ function createUiListeners(){
     }
 }
 
+function displayDialogue(){
+    console.log(selectedCharacter);
+    getActionBar("dialogue");
+    getId("textBox").innerHTML = "<h1>" + characters[selectedCharacter]["name"] + "</h1>";
+}
+
 function displayInfo(event){
     console.log("click");
     currentTarget = event.target;
     var id = currentTarget.id.split("_")[0];
+    if (currentTarget.className == "character"){
+        selectedCharacter = id;
+    }
     getActionBar(currentTarget.className);
     getId("infoBox").innerHTML = infos[id]["description"];
 }
@@ -86,23 +97,24 @@ function displayUi(event){
 }
 
 function doAction(event){
+    getId("actionBar").innerHTML = "";
+    getId("infoBox").innerHTML = "";
+
     if (event.target.id == "exitButton"){
-        getId("actionBar").innerHTML = "";
-        getId("textBox").innerHTML = "";
         displayScene();
     }
     else if (event.target.id == "inspectButton"){
         showInspect();
     }
     else if (event.target.id == "interactButton"){
-        getId("actionBar").innerHTML = "";
         triggerEvent();
     }
     else if (event.target.id == "pickUpButton"){
-        getId("actionBar").innerHTML = "";
-        getId("infoBox").innerHTML = "";
         pickUpItem();
         triggerEvent();
+    }
+    else if (event.target.id == "talkButton"){
+        displayDialogue();
     }
 }
 
