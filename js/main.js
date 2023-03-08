@@ -87,6 +87,7 @@ function displayUi(event){
 
 function doAction(event){
     if (event.target.id == "exitButton"){
+        getId("actionBar").innerHTML = "";
         getId("textBox").innerHTML = "";
         displayScene();
     }
