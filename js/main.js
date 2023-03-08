@@ -4,7 +4,6 @@ import infos from '../data/info.json' assert { type: "json" };
 import events from '../data/events.json' assert { type: "json"};
 import items from "../data/items.json" assert { type: "json" };
 import characters from "../data/characters.json" assert {type: "json"};
-console.log("Javascript working.");
 
 var currentScene = "demo";
 var currentTarget = "";
@@ -12,14 +11,21 @@ const classTypes = [ "inspect", "interact", "item", "character", "dialogue", "jo
 var inventory = [];
 var journal = [];
 var selectedCharacter;
+var dialogueTree;
 
 document.addEventListener("DOMContentLoaded", main);
 
 function createActionListeners(className){
     var elements = document.getElementsByClassName("actionButton");
-    console.log(elements);
     for (var i = 0; i < elements.length; i++){
         elements[i].addEventListener("click", doAction);
+    }
+}
+
+function createDialogueListeners(){
+    var elements = document.getElementsByClassName("dialogueButton");
+    for (var i = 0; i < elements.length; i++){
+        elements[i].addEventListener("click", handleDialogue)
     }
 }
 
@@ -27,7 +33,6 @@ function createEventListeners(){
     var elements;
     for ( var i = 0; i < classTypes.length; i++ ){
         elements = document.getElementsByClassName(classTypes[i]);
-        console.log(i + ": " + classTypes[i]);
         for (var j = 0; j < elements.length; j++){
             elements[j].addEventListener("click", displayInfo);
         }
@@ -42,13 +47,19 @@ function createUiListeners(){
 }
 
 function displayDialogue(){
-    console.log(selectedCharacter);
     getActionBar("dialogue");
-    getId("textBox").innerHTML = "<h1>" + characters[selectedCharacter]["name"] + "</h1>";
+    var text = getId("textBox");
+    text.innerHTML = "<h1>" + characters[selectedCharacter]["name"] + "</h1>";
+    dialogueTree = characters[selectedCharacter]["dialogue"];
+    for (var i = 0; i < Object.keys(dialogueTree["greeting"]).length; i++){
+        if (i == 0)
+            text.innerHTML += "<p><b>" + characters[selectedCharacter]["nickName"] + ":</b></p>";
+        text.innerHTML += dialogueTree["greeting"][i];
+    }
+    createDialogueListeners();
 }
 
 function displayInfo(event){
-    console.log("click");
     currentTarget = event.target;
     var id = currentTarget.id.split("_")[0];
     if (currentTarget.className == "character"){
@@ -63,7 +74,6 @@ function displayInventory(){
     getId("textBox").innerHTML = "<h1>Inventory</h1>";
     getActionBar("inventory");
     for (const element in inventory){
-        console.log("looping");
         getId("textBox").innerHTML += "<p id='" + inventory[element]["id"] + "' class='" + inventory[element]["class"] + "'>" + inventory[element]["title"] + " - " + inventory[element]["quantity"] + "</p>";
     }
 }
@@ -135,6 +145,25 @@ function getId(newId){
     return document.getElementById(newId);
 }
 
+function handleDialogue(event){
+    var text = getId("textBox");
+    let elements = text.getElementsByClassName("dialogueButton");
+    for (var i = (elements.length - 1); i >= 0; i--){
+        elements[i].remove();
+    }
+    getId("textBox").innerHTML += "<p><b>Player:</b></p>"
+    getId("textBox").innerHTML += "<p>" + event.target.textContent + "</p>";
+    currentTarget = event.target;
+    var newNode = dialogueTree[event.target.id];
+    for (var i = 0; i < Object.keys(newNode).length; i++){
+        if (i == 0)
+            getId("textBox").innerHTML += "<p><b>" + characters[selectedCharacter]["nickName"] + ":</b></p>"
+        getId("textBox").innerHTML += newNode[i];
+    }
+    triggerDialogueEvent();
+    createDialogueListeners();
+}
+
 function hasItem(newItem){
     for (var i = 0; i < Object.keys(inventory).length; i++){
         if (inventory[i]["title"] == newItem)
@@ -145,7 +174,6 @@ function hasItem(newItem){
 
 function pickUpItem(){
     var id = currentTarget.id.split("_")[0];
-    console.log(id);
     if (hasItem(id)){
         inventory[id]["quantity"]++;
     }
@@ -161,8 +189,12 @@ function showInspect(){
 }
 
 function triggerEvent(){
-    var newEvent = events[currentScene][currentTarget.id];
     console.log(currentTarget.id);
+    if (!events[currentScene][currentTarget.id]){
+        console.log("no event found!");
+        return;
+    }
+    var newEvent = events[currentScene][currentTarget.id];
 
     for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
         var currentEvent = newEvent["mods"][i];
@@ -172,13 +204,28 @@ function triggerEvent(){
         scenes[scene]["description"][newKey] = newValue;
     }
     journal.push(newEvent["journal"]);
-    console.log(journal);
     displayScene();
+}
+
+function triggerDialogueEvent(){
+    if (!events[currentScene][currentTarget.id]){
+        console.log("no event found!");
+        return;
+    }
+    var newEvent = events[currentScene][currentTarget.id];
+
+    for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
+        var currentEvent = newEvent["mods"][i];
+        var scene = currentEvent["scene"];
+        var newKey = currentEvent["index"];
+        var newValue = currentEvent["text"];
+        scenes[scene]["description"][newKey] = newValue;
+    }
+    journal.push(newEvent["journal"]);
 }
  
 function main(){
     var mainElement = getId("main");
-    console.log(buttons);
     displayScene();
     getMainMenuBar("core");
     createUiListeners();

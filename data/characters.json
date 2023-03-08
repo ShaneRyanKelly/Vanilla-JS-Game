@@ -1,7 +1,28 @@
 {
     "jellyBean":{
         "name": "Jellybean",
-        "nickname": "JB",
-        "greeting": "Hello, my name is JB, pleased to meet you!"
+        "nickName": "JB",
+        "dialogue":{
+            "greeting": {
+                "0": "<p>Hello, my name is JellyBean, but everyone calls me JB, pleased to meet you!</p>",
+                "1": "<button id='nextDialogue' class='dialogueButton'>Hi JB! Pleased to meet you, what can you tell me about [DIALOGUES]?</button>"
+            },
+            "nextDialogue": {
+                "0": "<p>[DIALOGUES] are navigated by clicking the colored buttons featuring the [RESPONSES]. Choose a [RESPONSE] and see where it takes you!</p>",
+                "1": "<button id='thirdDialogue' class='dialogueButton'>Thanks for the tip! I think I will try this one. What do you have to say about that?</button>",
+                "2": "<button id='fourthDialogue' class='dialogueButton'>Can [DIALOGUE] be used to trigger [EVENTS]?</button>"
+            },
+            "thirdDialogue": {
+                "0": "<p>I think you made the right choice! There is a lot you can learn for [DIALOGUE], what's more [DIALOGUES] can have far reaching implications for our world.</p>",
+                "1": "<button id='fourthDialogue' class='dialogueButton'>Far reaching implications, whatever do you mean?</button>"
+            },
+            "fourthDialogue": {
+                "0": "<p>Any dialogue may trigger [EVENTS] which will modify the [DIALOGUES] themselves or the world outside. Why not give it a try, what's the worst that can happen?",
+                "1": "<button id='fifthDialogue' class='dialogueButton'>You only live once, might as well try it...</button>"
+            },
+            "fifthDialogue": {
+                "0": "<p>Whoa, did you hear that? Something is moving around outside and it doesn't sound friendly!</p>"
+            }
+        }
     }
 }

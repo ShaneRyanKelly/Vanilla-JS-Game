@@ -18,7 +18,7 @@
                     "text": "<p>During the course of your adventure you will come across many useful [ITEMS] and [EQUIPMENT]. To pick up an <span id='demoItem_0' class='item'>item</span> simply click it's name and then click [PICK UP] on the [ACTION BAR]</p>"
                 }
             },
-            "journal": "<p>Today I began my adventure using Jellybean Game Engine! I interacted with a switch that generated extra text!</p>"
+            "journal": "<p>Today I began my adventure using Jellybean Game Engine! I [INTERACTED] with a switch that generated extra text!</p>"
         },
         "demoItem_0":{
             "mods": {
@@ -38,7 +38,23 @@
                     "text": "<p>[CHARACTERS] contain unique dialogue trees which are modifiable by [EVENTS]. Why not check it out and say 'Hello!' to <span id='jellyBean' class='character'>JB</span>! To talk to a [CHARACTER] click on their name and then click [TALK] on the [ACTION BAR].</p>"
                 }
             },
-            "journal": "Today I found a strange [ITEM]. Hopefully I find a use for it some day!"
-        }   
+            "journal": "<p>Today I found a strange [ITEM]. Hopefully I find a use for it some day!</p>"
+        },
+        "nextDialogue":{
+            "mods": {
+
+            },
+            "journal": "<p>I got a chance to speak with Jellybean in my first ever [DIALOGUE]</p>"
+        },
+        "fifthDialogue":{
+            "mods": {
+                "0":{
+                    "scene": "demo",
+                    "index": "demoEnemy",
+                    "text": "<p>[CHARACTER] [DIALOGUE] can modify [SCENES] as it has here. A fearsome <span id='demoEnemy' class='enemy'>[ENEMY]</span> stands before you. Engage the [ENEMY] in [BATTLE] by clicking their name and then clicking [FIGHT] on the [ACTION BAR]."
+                }
+            },
+            "journal": "<p>Jellybean showed me how dialogue can be used to modify scenes, scary!</p>"
+        }
     }
 }
