@@ -52,9 +52,14 @@
                     "scene": "demo",
                     "index": "demoEnemy",
                     "text": "<p>[CHARACTER] [DIALOGUE] can modify [SCENES] as it has here. A fearsome <span id='demoEnemy' class='enemy'>[ENEMY]</span> stands before you. Engage the [ENEMY] in [BATTLE] by clicking their name and then clicking [FIGHT] on the [ACTION BAR]."
+                },
+                "1":{
+                    "scene": "demo",
+                    "index": "demoCharacter",
+                    "text": "<p>JB is cowering in fear of the [ENEMY]. Please, do something about this!"
                 }
             },
-            "journal": "<p>Jellybean showed me how dialogue can be used to modify scenes, scary!</p>"
+            "journal": "<p>JB showed me how dialogue can be used to modify scenes, scary!</p>"
         }
     }
 }
