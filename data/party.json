@@ -1,0 +1,18 @@
+{
+    "player": {
+        "name": "Shane",
+        "imagePath": "./assets/enemies/demoEnemy.png",
+        "hp": "33",
+        "mp": "33",
+        "strength": "33",
+        "resilience": "33",
+        "agility": "33",
+        "wisdom": "33",
+        "luck": "33",
+        "deftness": "33",
+        "charm": "33",
+        "magicalMending": "33",
+        "magicalMight": "33",
+        "description": "Our fearless leader."
+    }
+}

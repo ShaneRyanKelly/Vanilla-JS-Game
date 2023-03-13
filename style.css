@@ -48,15 +48,23 @@ button {
     background-color: #ff9500;
     cursor: pointer;
 }
+#attackButton {
+    background-color: #b9050e;
+}
 #inventoryButton {
     background-color: #b9050e;
+}
+#magicButton {
+    background-color: #ff9500;
 }
 #equipButton {
     background-color: #bc5505;
 }
+#skillButton {
+    background-color: #ff4f00;
+}
 #statusButton {
     background-color: #139a04;
-    
 }
 #journalButton {
     background-color: #03746b;

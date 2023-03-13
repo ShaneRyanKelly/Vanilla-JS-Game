@@ -4,14 +4,19 @@ import infos from '../data/info.json' assert { type: "json" };
 import events from '../data/events.json' assert { type: "json"};
 import items from "../data/items.json" assert { type: "json" };
 import characters from "../data/characters.json" assert {type: "json"};
+import enemies from "../data/enemies.json" assert {type: "json"};
+import party from "../data/party.json" assert {type: "json"};
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect", "interact", "item", "character", "dialogue", "journalButton" ];
+const classTypes = [ "inspect", "interact", "item", "character", "dialogue", "enemy" ];
 var inventory = [];
 var journal = [];
 var selectedCharacter;
 var dialogueTree;
+var inBattle = false;
+var player;
+var enemy;
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -46,15 +51,25 @@ function createUiListeners(){
     }
 }
 
+function displayBattle(){
+    console.log('battlebutton clicked!');
+    inBattle = true;
+    getActionBar("battle");
+    var textBox = getId("textBox");
+    enemy = enemies[currentTarget.id];
+    textBox.innerHTML = "<h1>" + enemy["name"] + "</h1>";
+    textBox.innerHTML += "<img src='" + enemy["imagePath"] + "' />";
+}
+
 function displayDialogue(){
     getActionBar("dialogue");
-    var text = getId("textBox");
-    text.innerHTML = "<h1>" + characters[selectedCharacter]["name"] + "</h1>";
+    var textBox = getId("textBox");
+    textBox.innerHTML = "<h1>" + characters[selectedCharacter]["name"] + "</h1>";
     dialogueTree = characters[selectedCharacter]["dialogue"];
     for (var i = 0; i < Object.keys(dialogueTree["greeting"]).length; i++){
         if (i == 0)
-            text.innerHTML += "<p><b>" + characters[selectedCharacter]["nickName"] + ":</b></p>";
-        text.innerHTML += dialogueTree["greeting"][i];
+            textBox.innerHTML += "<p><b>" + characters[selectedCharacter]["nickName"] + ":</b></p>";
+        textBox.innerHTML += dialogueTree["greeting"][i];
     }
     createDialogueListeners();
 }
@@ -98,6 +113,7 @@ function displayScene(){
 
 function displayUi(event){
     var currentTarget = event.target;
+    console.log(event);
     if (currentTarget.id == "journalButton"){
         displayJournal();
     }
@@ -107,24 +123,35 @@ function displayUi(event){
 }
 
 function doAction(event){
-    getId("actionBar").innerHTML = "";
     getId("infoBox").innerHTML = "";
-
+    console.log("doaction");
     if (event.target.id == "exitButton"){
+        getId("actionBar").innerHTML = "";
         displayScene();
     }
     else if (event.target.id == "inspectButton"){
         showInspect();
     }
     else if (event.target.id == "interactButton"){
+        getId("actionBar").innerHTML = "";
         triggerEvent();
     }
     else if (event.target.id == "pickUpButton"){
+        getId("actionBar").innerHTML = "";
         pickUpItem();
         triggerEvent();
     }
     else if (event.target.id == "talkButton"){
+        getId("actionBar").innerHTML = "";
         displayDialogue();
+    }
+    else if (event.target.id == "battleButton"){
+        getId("actionBar").innerHTML = "";
+        getId("menuBar").innerHTML = "";
+        displayBattle();
+    }
+    else if (event.target.id == "attackButton"){
+        handleAttack();
     }
 }
 
@@ -143,6 +170,19 @@ function getMainMenuBar(newBar){
 
 function getId(newId){
     return document.getElementById(newId);
+}
+
+function getTurnNum(character){
+    
+}
+
+function getTurnOrder(){
+    var playerNum = getTurnNum(player);
+    var enemyNum = getTurnNum(enemy);
+}
+
+function handleAttack(){
+    var turnOrder = getTurnOrder();
 }
 
 function handleDialogue(event){
@@ -226,6 +266,7 @@ function triggerDialogueEvent(){
  
 function main(){
     var mainElement = getId("main");
+    player = party["player"];
     displayScene();
     getMainMenuBar("core");
     createUiListeners();

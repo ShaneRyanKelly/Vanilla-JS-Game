@@ -1,4 +1,8 @@
 {
+    "demoEnemy": {
+        "description": "A fearsome [ENEMY].",
+        "info": "The [ENEMY] gnashes his teeth in your general direction."
+    },
     "demoInspect": {
         "description": "A sample inspectable element.",
         "info": "Elements highlighted in coral may be inspected to get further info."
