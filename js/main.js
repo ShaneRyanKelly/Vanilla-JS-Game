@@ -56,7 +56,7 @@ function displayBattle(){
     inBattle = true;
     getActionBar("battle");
     var textBox = getId("textBox");
-    enemy = enemies[currentTarget.id];
+    enemy = enemies[currentTarget.id.split("_")[0]];
     textBox.innerHTML = "<h1>" + enemy["name"] + "</h1>";
     textBox.innerHTML += "<img src='" + enemy["imagePath"] + "' />";
 }
@@ -127,6 +127,7 @@ function doAction(event){
     console.log("doaction");
     if (event.target.id == "exitButton"){
         getId("actionBar").innerHTML = "";
+        triggerEvent();
         displayScene();
     }
     else if (event.target.id == "inspectButton"){
@@ -151,7 +152,25 @@ function doAction(event){
         displayBattle();
     }
     else if (event.target.id == "attackButton"){
-        handleAttack();
+        player["selectedAction"] = "attack";
+        handleTurn();
+    }
+}
+
+function executeActions(characters){
+    console.log(characters);
+    var textBox = getId("textBox");
+    for (var i = 0; i < characters.length; i++){
+        if (characters[i]["selectedAction"] == "attack"){
+            var damage = getAttackDamage(characters[i]);
+            textBox.innerHTML += "<p>" + characters[i]["name"] + " attacks dealing " + damage + " damage!</p>"
+        }
+        characters[i]["target"]["hp"] -= damage;
+        if (characters[i]["target"]["hp"] <= 0){
+            textBox.innerHTML += characters[i]["name"] + " defeated " + characters[i]["target"]["name"] + "!";
+            getActionBar("dialogue");
+            break;
+        }
     }
 }
 
@@ -160,6 +179,10 @@ function getActionBar(className){
     actionBar.innerHTML = "";
     actionBar.innerHTML = buttons[className];
     createActionListeners(className);
+}
+
+function getAttackDamage(character){
+    return ((character["attack"] - character["defense"])) / 2 + ((((character["attack"] - character["defense"]) / 2) + 1) * Math.floor(Math.random() * 256) / 256) / 4
 }
 
 function getMainMenuBar(newBar){
@@ -173,16 +196,31 @@ function getId(newId){
 }
 
 function getTurnNum(character){
-    
+    return (Math.floor(Math.random() * 255) * (character["agility"] - (character["agility"] / 4))/256);
 }
 
 function getTurnOrder(){
     var playerNum = getTurnNum(player);
     var enemyNum = getTurnNum(enemy);
+    var turnArray = [];
+    if (playerNum > enemyNum){
+        turnArray.push(enemy);
+        turnArray.push(player);
+    }
+    else{
+        turnArray.push(player);
+        turnArray.push(enemy);
+    }
+    return turnArray;
 }
 
-function handleAttack(){
+function handleTurn(){
+    console.log("Turn initiated");
+    enemy["selectedAction"] = enemy["actions"][Math.floor(Math.random() * Object.keys(enemy["actions"]).length)];
+    enemy["target"] = player;
+    player["target"] = enemy;
     var turnOrder = getTurnOrder();
+    executeActions(turnOrder);
 }
 
 function handleDialogue(event){

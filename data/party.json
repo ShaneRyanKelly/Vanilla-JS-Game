@@ -2,7 +2,10 @@
     "player": {
         "name": "Shane",
         "imagePath": "./assets/enemies/demoEnemy.png",
-        "hp": "33",
+        "attack": "33",
+        "defense": "3",
+        "evasion": "33",
+        "hp": "333",
         "mp": "33",
         "strength": "33",
         "resilience": "33",
@@ -13,6 +16,8 @@
         "charm": "33",
         "magicalMending": "33",
         "magicalMight": "33",
-        "description": "Our fearless leader."
+        "description": "Our fearless leader.",
+        "selectedAction": "",
+        "target": ""
     }
 }

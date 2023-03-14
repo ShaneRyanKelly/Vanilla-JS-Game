@@ -51,15 +51,30 @@
                 "0":{
                     "scene": "demo",
                     "index": "demoEnemy",
-                    "text": "<p>[CHARACTER] [DIALOGUE] can modify [SCENES] as it has here. A fearsome <span id='demoEnemy' class='enemy'>[ENEMY]</span> stands before you. Engage the [ENEMY] in [BATTLE] by clicking their name and then clicking [FIGHT] on the [ACTION BAR]."
+                    "text": "<p>[CHARACTER] [DIALOGUE] can modify [SCENES] as it has here. A fearsome <span id='demoEnemy_0' class='enemy'>[ENEMY]</span> stands before you. Engage the [ENEMY] in [BATTLE] by clicking their name and then clicking [FIGHT] on the [ACTION BAR].</p>"
                 },
                 "1":{
                     "scene": "demo",
                     "index": "demoCharacter",
-                    "text": "<p>JB is cowering in fear of the [ENEMY]. Please, do something about this!"
+                    "text": "<p>JB is cowering in fear of the [ENEMY]. Please, do something about this!</p>"
                 }
             },
             "journal": "<p>JB showed me how dialogue can be used to modify scenes, scary!</p>"
+        },
+        "demoEnemy_0":{
+            "mods":{
+                "0":{
+                    "scene": "demo",
+                    "index": "demoEnemy",
+                    "text": "<p>The pitiful [ENEMY] lies in a broken lump on the ground.</p>"
+                },
+                "1":{
+                    "scene": "demo",
+                    "index": "demoCharacter",
+                    "text": "<p>Behind you, <span id='jellyBean' class='character'>JB</span> stands smiling serenely, grateful for your victory over the [ENEMY]</p>"
+                }
+            },
+            "journal": "I defeated the despicable Demo Enemy and saved JB's life!"
         }
     }
 }
