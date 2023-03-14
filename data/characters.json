@@ -28,7 +28,7 @@
                 "response0": "<button id='sceneExample' class='dialogueButton'>Could you show me what a [SCENE] looks like?</button>"
             },
             "sceneExample":{
-                "prompt": "<p>Sure! I don't mind! A [SCENE] looks like this:</p class='snippet'><br>'demo': {<br>'description': {<br>'title': 'Title',<br>'intro': 'Some introductory text',<br>'description': 'Use additional indeces to add <span id='content' class='info'>content</span> to the [SCENE]'<br>}<br>}<br><p>Writing a new [SCENE] is as simple as modifying this simple object. From this [SCENE] description we were able to create the series of [EVENTS] you just played. I guess that would be the next step, learning about [EVENTS]</p>",
+                "prompt": "<p>Sure! I don't mind! A [SCENE] looks like this:<pre class='snippet'><br>'sceneName': {<br>    'description': {<br>        'title': 'Title',<br>        'intro': 'Some introductory text',<br>        'description': 'Use additional indeces to add <span id='content' class='info'>content</span> to the [SCENE]'<br>    }<br>}</pre><br><p>Writing a new [SCENE] is as simple as modifying this simple object. From this [SCENE] description we were able to create the series of [EVENTS] you just played. I guess that would be the next step, learning about [EVENTS]</p>",
                 "response0": "<button id='greeting' class='dialogueButton'>Let's talk about something else...</button>"
             }
         }

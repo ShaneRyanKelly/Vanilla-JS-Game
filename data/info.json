@@ -3,6 +3,10 @@
         "description": "[SCENE] content includes [INFOS], [INTERACTS], [ITEMS], [CHARACTERS], [ENEMIES] and more! ",
         "info": "Talk to JB to learn more about content!"
     },
+    "demoArmour": {
+        "description": "A plain suit of armour.",
+        "info": "It is surprisingly shiny."
+    },
     "demoEnemy": {
         "description": "A fearsome [ENEMY].",
         "info": "The [ENEMY] gnashes his teeth in your general direction."
@@ -18,6 +22,10 @@
     "demoItem": {
         "description": "A sample item.",
         "info": "Pick up an item by clicking [PICK UP] on the [ACTION BAR]"
+    },
+    "demoWeapon": {
+        "description": "A sample Weapon.",
+        "info": "It looks sharp."
     },
     "jellyBean": {
         "description": "A sample character.",

@@ -1,8 +1,29 @@
 {
+    "demoArmour": {
+        "id": "demoArmour",
+        "title": "Demo Weapon",
+        "class": "armour",
+        "defense": 13,
+        "evasion": 3,
+        "buyPrice": 10,
+        "sellPrice": 5,
+        "quantity": 0
+    },
     "demoItem": {
         "id": "demoItem",
         "title": "Demo Item",
         "class": "consumable",
+        "buyPrice": 5,
+        "sellPrice": 2,
+        "quantity": 0
+    },
+    "demoWeapon": {
+        "id": "demoWeapon",
+        "title": "Demo Weapon",
+        "class": "weapon",
+        "attack": 13,
+        "buyPrice": 10,
+        "sellPrice": 5,
         "quantity": 0
     }
 }

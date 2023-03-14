@@ -41,6 +41,9 @@ button {
     background-color: #b9050e;
     cursor: pointer;
 }
+.weapon{
+    background-color: #b9050e;
+}
 .inspect {
     cursor: pointer;
     background-color: #ff4f00;

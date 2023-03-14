@@ -8,5 +8,6 @@
     "character": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='talkButton' class='actionButton'>Talk</button>",
     "dialogue": "<button id='exitButton' class='actionButton'>Exit</button>",
     "enemy": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='battleButton' class='actionButton'>Battle</button>",
-    "battle": "<button id='attackButton' class='actionButton'>Attack</button><button id='skillButton' class='actionButton'>Skill</button><button id='magicButton' class='actionButton'>Magic</button><button id='equipButton' class='actionButton'>Equip</button><button id='statusButton' class='actionButton'>Status</button><button id='itemButton' class='actionButton'>Item</button>"
+    "battle": "<button id='attackButton' class='actionButton'>Attack</button><button id='skillButton' class='actionButton'>Skill</button><button id='magicButton' class='actionButton'>Magic</button><button id='equipButton' class='actionButton'>Equip</button><button id='statusButton' class='actionButton'>Status</button><button id='itemButton' class='actionButton'>Item</button>",
+    "exitBattle": "<button id='exitBattle' class='actionButton'>Exit</button>"
 }

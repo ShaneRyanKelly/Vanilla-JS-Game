@@ -18,6 +18,7 @@
         "magicalMight": "33",
         "description": "Our fearless leader.",
         "selectedAction": "",
-        "target": ""
+        "target": "",
+        "inventory": {}
     }
 }

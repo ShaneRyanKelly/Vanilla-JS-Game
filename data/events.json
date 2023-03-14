@@ -30,17 +30,44 @@
                 },
                 "1":{
                     "scene": "demo",
+                    "index": "demoItem_1",
+                    "text": "<p>The [ITEM] you just picked up is a [CONSUMABLE] item that can be used once. Jellybean Engine also includes other classes of [ITEMS] like [ARMOUR] and [WEAPONS]. Why not [PICK UP] this <span id='demoWeapon' class='item'>Demo Weapon</span>?</p>"
+                }
+            },
+            "dialogueMods":{},
+            "journal": "<p>Today I found a strange [ITEM]. Hopefully I find a use for it some day!</p>"
+        },
+        "demoWeapon":{
+            "mods": {
+                "0":{
+                    "scene": "demo",
+                    "index": "demoItem_1",
+                    "text": "<p>Great! Now that you have a [WEAPON], you'll be needing some [ARMOUR]! Go ahead and [PICK UP] this <span id='demoArmour' class='item'>Demo Armour</span>.</p>"
+                }
+            },
+            "dialogueMods":{},
+            "journal": "I look brilliant in my shining armour!"
+        },
+        "demoArmour":{
+            "mods": {
+                "0":{
+                    "scene": "demo",
+                    "index": "demoItem_1",
+                    "text": "<p>Now that you have a [WEAPON] and [ARMOUR] go ahead and equip them by either clicking [EQUIP] to open the [EQUIP] menu or you may equip from the [INVENTORY].</p>"
+                },
+                "2":{
+                    "scene": "demo",
                     "index": "dialogueSystem",
                     "text": "<p>Jellybean also comes equipped with a full fledged dialogue system!</p>"
                 },
-                "2":{
+                "3":{
                     "scene": "demo",
                     "index": "demoCharacter",
                     "text": "<p>[CHARACTERS] contain unique dialogue trees which are modifiable by [EVENTS]. Why not check it out and say 'Hello!' to <span id='jellyBean' class='character'>JB</span>! To talk to a [CHARACTER] click on their name and then click [TALK] on the [ACTION BAR].</p>"
                 }
             },
             "dialogueMods":{},
-            "journal": "<p>Today I found a strange [ITEM]. Hopefully I find a use for it some day!</p>"
+            "journal": "I am fully equipped!"
         },
         "nextDialogue":{
             "mods": {
@@ -88,17 +115,29 @@
                 "1":{
                     "character": "jellyBean",
                     "index": "greeting",
-                    "response": "response5",
+                    "response": "response0",
                     "text": "<button id='lastDialogue' class='dialogueButton'>Please, hold your applause, it was nothing.</button>"
                 },
                 "2":{
                     "character": "jellyBean",
                     "index": "greeting",
-                    "response": "response0",
+                    "response": "response1",
                     "text": "<button id='scenesDescription' class='dialogueButton'>Tell me more about [SCENES].</button>"
                 }
             },
-            "journal": "I defeated the despicable Demo Enemy and saved JB's life!"
+            "journal": "<p>I defeated the despicable Demo Enemy and saved JB's life!</p>"
+        },
+        "sceneExample":{
+            "mods":{},
+            "dialogueMods":{
+                "0":{
+                    "character": "jellyBean",
+                    "index": "greeting",
+                    "response": "response2",
+                    "text": "<button id='eventDescription' class='dialogueButton'>Tell me more about [EVENTS].</button>"
+                }
+            },
+            "journal": "<p>I learned about [SCENES] from JellyBean!</p>"
         }
     }
 }

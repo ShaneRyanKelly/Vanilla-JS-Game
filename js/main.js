@@ -100,6 +100,7 @@ function displayJournal(){
     getId("infoBox").innerHTML = "";
     getId("textBox").innerHTML = "<h1>Journal</h1>"
     getActionBar("journal");
+    console.log(journal);
     for (var i = 0; i < journal.length; i++){
         getId("textBox").innerHTML += journal[i];
     }
@@ -130,6 +131,12 @@ function doAction(event){
     console.log("doaction");
     if (event.target.id == "exitButton"){
         getId("actionBar").innerHTML = "";
+        //triggerEvent();
+        displayScene();
+        getMainMenuBar("core");
+    }
+    else if (event.target.id == "exitBattle"){
+        getId("actionBar").innerHTML = "";
         triggerEvent();
         displayScene();
         getMainMenuBar("core");
@@ -148,6 +155,7 @@ function doAction(event){
     }
     else if (event.target.id == "talkButton"){
         getId("actionBar").innerHTML = "";
+        getId("menuBar").innerHTML = "";
         displayDialogue();
     }
     else if (event.target.id == "battleButton"){
@@ -173,7 +181,7 @@ function executeActions(characters){
         characters[i]["target"]["hp"] -= damage;
         if (characters[i]["target"]["hp"] <= 0){
             textBox.innerHTML += characters[i]["name"] + " defeated " + characters[i]["target"]["name"] + "!";
-            getActionBar("dialogue");
+            getActionBar("exitBattle");
             inBattle = false;
             break;
         }
@@ -195,6 +203,7 @@ function getMainMenuBar(newBar){
     var menuBar = getId("menuBar");
     menuBar.innerHTML = "";
     menuBar.innerHTML = buttons[newBar];
+    createUiListeners();
 }
 
 function getId(newId){
@@ -253,8 +262,8 @@ function handleDialogue(event){
 }
 
 function hasItem(newItem){
-    for (var i = 0; i < Object.keys(inventory).length; i++){
-        if (inventory[i]["title"] == newItem)
+    for (var item in inventory){
+        if (inventory[item]["title"] == newItem)
             return true;
     }
     return false;
@@ -288,9 +297,8 @@ function triggerEvent(){
         return;
     }
     var newEvent = events[currentScene][currentTarget.id];
-
-    for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
-        var currentEvent = newEvent["mods"][i];
+    for (var mod in newEvent["mods"]){
+        var currentEvent = newEvent["mods"][mod];
         var scene = currentEvent["scene"];
         var newKey = currentEvent["index"];
         var newValue = currentEvent["text"];
@@ -299,7 +307,6 @@ function triggerEvent(){
     console.log(newEvent["dialogueMods"]);
     for (var i = 0; i < Object.keys(newEvent["dialogueMods"]).length; i++){
         var currentEvent = newEvent["dialogueMods"][i];
-        console.log(newEvent);
         var character = currentEvent["character"];
         var newIndex = currentEvent["index"];
         var newResponse = currentEvent["response"];
@@ -308,6 +315,7 @@ function triggerEvent(){
     }
     journal.push(newEvent["journal"]);
     displayScene();
+    getMainMenuBar("core");
     scrollDown();
 }
 
@@ -317,14 +325,28 @@ function triggerDialogueEvent(){
         return;
     }
     var newEvent = events[currentScene][currentTarget.id];
-
-    for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
-        var currentEvent = newEvent["mods"][i];
+    for (var mod in newEvent["mods"]){
+        var currentEvent = newEvent["mods"][mod];
         var scene = currentEvent["scene"];
         var newKey = currentEvent["index"];
         var newValue = currentEvent["text"];
         scenes[scene]["description"][newKey] = newValue;
     }
+    for (var mod in newEvent["dialogueMods"]){
+        var currentEvent = newEvent["dialogueMods"][mod];
+        var character = currentEvent["character"];
+        var newIndex = currentEvent["index"];
+        var newResponse = currentEvent["response"];
+        var newText = currentEvent["text"];
+        characters[character]["dialogue"][newIndex][newResponse] = newText;
+    }
+    /*for (var i = 0; i < Object.keys(newEvent["mods"]).length; i++){
+        var currentEvent = newEvent["mods"][i];
+        var scene = currentEvent["scene"];
+        var newKey = currentEvent["index"];
+        var newValue = currentEvent["text"];
+        scenes[scene]["description"][newKey] = newValue;
+    }*/
     journal.push(newEvent["journal"]);
     scrollDown();
 }
@@ -334,5 +356,4 @@ function main(){
     player = party["player"];
     displayScene();
     getMainMenuBar("core");
-    createUiListeners();
 }
