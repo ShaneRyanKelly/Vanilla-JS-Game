@@ -30,6 +30,14 @@
             "sceneExample":{
                 "prompt": "<p>Sure! I don't mind! A [SCENE] looks like this:<pre class='snippet'><br>'sceneName': {<br>    'description': {<br>        'title': 'Title',<br>        'intro': 'Some introductory text',<br>        'description': 'Use additional indeces to add <span id='content' class='info'>content</span> to the [SCENE]'<br>    }<br>}</pre><br><p>Writing a new [SCENE] is as simple as modifying this simple object. From this [SCENE] description we were able to create the series of [EVENTS] you just played. I guess that would be the next step, learning about [EVENTS]</p>",
                 "response0": "<button id='greeting' class='dialogueButton'>Let's talk about something else...</button>"
+            },
+            "eventDescription":{
+                "prompt": "<p>[EVENTS] are what makes the world turn in JellyBean Game Engine! [EVENTS] can be triggered by most game interactions such as [INTERACTS], picking up [ITEMS], using [ITEMS], [DIALOGUES], and [BATTLES]. All these interactions become the keys to unlocking further content and avenues of play through [EVENTS]. Once triggered, an [EVENT] can modify [SCENES], [DIALOGUES] and the [JOURNAL].</p>",
+                "response0": "<button id='eventExample' class='dialogueButton'>Can you show me what an [EVENT] looks like?</button>"
+            },
+            "eventExample": {
+                "prompt": "<p>Of course! An [EVENT] looks like this:<br><br><pre class='snippet'>'demoEvent':{<br>    'mods':{<br>        '0':{<br>            'scene': 'demo',<br>            'index': 'demoModify',<br>            'text': 'Modifying this text will modify existing text under the ID 'demoModify' in the scene hierarchy.'<br>        },<br>        '1':{<br>            'scene': 'demo',<br>            'index': 'demoAmmend',<br>            'text': 'This text will be ammended to a new index in the scene hierarchy.'<br>    }<br>    },<br>    'dialogueMods':{<br>        '0':{<br>            'character': 'jellyBean',<br>            'index': 'greeting',<br>            'response': 'prompt',<br>            'text': 'This will replace [CHARACTERS] top level greeting'<br>        },<br>        '1':{<br>            'character': 'jellyBean',<br>            'index': 'greeting',<br>            'response': 'response1',<br>            'text': 'This will ammend 'response1' after existing 'response0''<br>        }<br>    },<br>    'journal': 'This text will go in the journal'<br>}</pre></p>",
+                "response0": "<button id='greeting' class='dialogueButton'>Let's talk about something else...</button>"
             }
         }
     }
