@@ -88,8 +88,14 @@
                 "1":{
                     "character": "jellyBean",
                     "index": "greeting",
-                    "response": "response0",
+                    "response": "response5",
                     "text": "<button id='lastDialogue' class='dialogueButton'>Please, hold your applause, it was nothing.</button>"
+                },
+                "2":{
+                    "character": "jellyBean",
+                    "index": "greeting",
+                    "response": "response0",
+                    "text": "<button id='scenesDescription' class='dialogueButton'>Tell me more about [SCENES].</button>"
                 }
             },
             "journal": "I defeated the despicable Demo Enemy and saved JB's life!"

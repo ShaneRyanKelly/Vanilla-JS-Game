@@ -52,6 +52,11 @@ button {
     background-color: #ff9500;
     cursor: pointer;
 }
+.snippet{
+    text-align: left;
+    display: inline-block;
+    background-color: grey;
+}
 #attackButton {
     background-color: #b9050e;
 }

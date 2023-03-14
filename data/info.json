@@ -1,4 +1,8 @@
 {
+    "content": {
+        "description": "[SCENE] content includes [INFOS], [INTERACTS], [ITEMS], [CHARACTERS], [ENEMIES] and more! ",
+        "info": "Talk to JB to learn more about content!"
+    },
     "demoEnemy": {
         "description": "A fearsome [ENEMY].",
         "info": "The [ENEMY] gnashes his teeth in your general direction."
