@@ -168,6 +168,7 @@ function executeActions(characters){
         if (characters[i]["selectedAction"] == "attack"){
             var damage = getAttackDamage(characters[i]);
             textBox.innerHTML += "<p>" + characters[i]["name"] + " attacks dealing " + damage + " damage!</p>"
+            scrollDown();
         }
         characters[i]["target"]["hp"] -= damage;
         if (characters[i]["target"]["hp"] <= 0){
@@ -226,6 +227,7 @@ function handleTurn(){
     player["target"] = enemy;
     var turnOrder = getTurnOrder();
     executeActions(turnOrder);
+    scrollDown();
 }
 
 function handleDialogue(event){
@@ -247,6 +249,7 @@ function handleDialogue(event){
     }
     triggerDialogueEvent();
     createDialogueListeners();
+    scrollDown();
 }
 
 function hasItem(newItem){
@@ -266,6 +269,11 @@ function pickUpItem(){
         inventory[id] = items[id];
         inventory[id]["quantity"]++;
     }
+}
+
+function scrollDown(){
+    var textBox = document.body;
+    textBox.scrollTop = textBox.scrollHeight;
 }
 
 function showInspect(){
@@ -300,6 +308,7 @@ function triggerEvent(){
     }
     journal.push(newEvent["journal"]);
     displayScene();
+    scrollDown();
 }
 
 function triggerDialogueEvent(){
@@ -317,6 +326,7 @@ function triggerDialogueEvent(){
         scenes[scene]["description"][newKey] = newValue;
     }
     journal.push(newEvent["journal"]);
+    scrollDown();
 }
  
 function main(){

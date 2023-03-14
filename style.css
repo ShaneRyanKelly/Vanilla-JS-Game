@@ -2,6 +2,7 @@ body {
     text-align: center;
     font-size: 1.5em;
     cursor: default;
+    overflow: auto;
 }
 #infoBox {
     background-color: black;
