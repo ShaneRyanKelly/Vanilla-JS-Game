@@ -288,6 +288,16 @@ function triggerEvent(){
         var newValue = currentEvent["text"];
         scenes[scene]["description"][newKey] = newValue;
     }
+    console.log(newEvent["dialogueMods"]);
+    for (var i = 0; i < Object.keys(newEvent["dialogueMods"]).length; i++){
+        var currentEvent = newEvent["dialogueMods"][i];
+        console.log(newEvent);
+        var character = currentEvent["character"];
+        var newIndex = currentEvent["index"];
+        var newResponse = currentEvent["response"];
+        var newText = currentEvent["text"];
+        characters[character]["dialogue"][newIndex][newResponse] = newText;
+    }
     journal.push(newEvent["journal"]);
     displayScene();
 }

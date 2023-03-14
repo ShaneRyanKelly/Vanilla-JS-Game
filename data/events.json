@@ -18,6 +18,7 @@
                     "text": "<p>During the course of your adventure you will come across many useful [ITEMS] and [EQUIPMENT]. To pick up an <span id='demoItem_0' class='item'>item</span> simply click it's name and then click [PICK UP] on the [ACTION BAR]</p>"
                 }
             },
+            "dialogueMods":{},
             "journal": "<p>Today I began my adventure using Jellybean Game Engine! I [INTERACTED] with a switch that generated extra text!</p>"
         },
         "demoItem_0":{
@@ -38,12 +39,14 @@
                     "text": "<p>[CHARACTERS] contain unique dialogue trees which are modifiable by [EVENTS]. Why not check it out and say 'Hello!' to <span id='jellyBean' class='character'>JB</span>! To talk to a [CHARACTER] click on their name and then click [TALK] on the [ACTION BAR].</p>"
                 }
             },
+            "dialogueMods":{},
             "journal": "<p>Today I found a strange [ITEM]. Hopefully I find a use for it some day!</p>"
         },
         "nextDialogue":{
             "mods": {
 
             },
+            "dialogueMods":{},
             "journal": "<p>I got a chance to speak with Jellybean in my first ever [DIALOGUE]</p>"
         },
         "fifthDialogue":{
@@ -59,6 +62,7 @@
                     "text": "<p>JB is cowering in fear of the [ENEMY]. Please, do something about this!</p>"
                 }
             },
+            "dialogueMods":{},
             "journal": "<p>JB showed me how dialogue can be used to modify scenes, scary!</p>"
         },
         "demoEnemy_0":{
@@ -72,6 +76,20 @@
                     "scene": "demo",
                     "index": "demoCharacter",
                     "text": "<p>Behind you, <span id='jellyBean' class='character'>JB</span> stands smiling serenely, grateful for your victory over the [ENEMY]</p>"
+                }
+            },
+            "dialogueMods":{
+                "0":{
+                    "character": "jellyBean",
+                    "index": "greeting",
+                    "response": "prompt",
+                    "text": "<p>You did it! You defeated the [ENEMY]! Great job! How can I help you?</p>"
+                },
+                "1":{
+                    "character": "jellyBean",
+                    "index": "greeting",
+                    "response": "response0",
+                    "text": "<button id='lastDialogue' class='dialogueButton'>Please, hold your applause, it was nothing.</button>"
                 }
             },
             "journal": "I defeated the despicable Demo Enemy and saved JB's life!"
