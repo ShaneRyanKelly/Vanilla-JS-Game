@@ -138,6 +138,30 @@
                 }
             },
             "journal": "<p>I learned about [SCENES] from JellyBean!</p>"
+        },
+        "eventExample":{
+            "mods":{},
+            "dialogueMods":{
+                "0":{
+                    "character": "jellyBean",
+                    "index": "greeting",
+                    "response": "response3",
+                    "text": "<button id='dialogueDescription' class='dialogueButton'>Tell me more about [DIALOGUE].</button>"
+                }
+            },
+            "journal": "<p>I learned about [EVENTS] from JellyBean!</p>"
+        },
+        "dialogueExample":{
+            "mods":{},
+            "dialogueMods":{
+                "0":{
+                    "character": "jellyBean",
+                    "index": "greeting",
+                    "response": "response4",
+                    "text": "<button id='dialogueDescription' class='dialogueButton'>Tell me more about [ITEMS], [ENEMIES] and [INFO].</button>"
+                }
+            },
+            "journal": "<p>I learned about [DIALOGUE] from JellyBean!</p>"
         }
     }
 }
