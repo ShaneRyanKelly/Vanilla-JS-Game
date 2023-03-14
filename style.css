@@ -7,6 +7,10 @@ body {
     background-color: black;
     color: aliceblue;
 }
+#textBox {
+    background-color: aliceblue;
+    overflow: auto;
+}
 .actionButton {
     background-color: #43B3AE;
 }

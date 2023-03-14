@@ -66,10 +66,13 @@ function displayDialogue(){
     var textBox = getId("textBox");
     textBox.innerHTML = "<h1>" + characters[selectedCharacter]["name"] + "</h1>";
     dialogueTree = characters[selectedCharacter]["dialogue"];
-    for (var i = 0; i < Object.keys(dialogueTree["greeting"]).length; i++){
+    console.log(dialogueTree["greeting"]);
+    var i = 0;
+    for (var node in dialogueTree["greeting"]){
         if (i == 0)
             textBox.innerHTML += "<p><b>" + characters[selectedCharacter]["nickName"] + ":</b></p>";
-        textBox.innerHTML += dialogueTree["greeting"][i];
+        textBox.innerHTML += dialogueTree["greeting"][node];
+        i++;
     }
     createDialogueListeners();
 }
@@ -129,6 +132,7 @@ function doAction(event){
         getId("actionBar").innerHTML = "";
         triggerEvent();
         displayScene();
+        getMainMenuBar("core");
     }
     else if (event.target.id == "inspectButton"){
         showInspect();
@@ -169,6 +173,7 @@ function executeActions(characters){
         if (characters[i]["target"]["hp"] <= 0){
             textBox.innerHTML += characters[i]["name"] + " defeated " + characters[i]["target"]["name"] + "!";
             getActionBar("dialogue");
+            inBattle = false;
             break;
         }
     }
@@ -233,10 +238,12 @@ function handleDialogue(event){
     getId("textBox").innerHTML += "<p>" + event.target.textContent + "</p>";
     currentTarget = event.target;
     var newNode = dialogueTree[event.target.id];
-    for (var i = 0; i < Object.keys(newNode).length; i++){
+    var i = 0;
+    for (var node in newNode){
         if (i == 0)
             getId("textBox").innerHTML += "<p><b>" + characters[selectedCharacter]["nickName"] + ":</b></p>"
-        getId("textBox").innerHTML += newNode[i];
+        getId("textBox").innerHTML += newNode[node];
+        i++;
     }
     triggerDialogueEvent();
     createDialogueListeners();
