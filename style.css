@@ -44,12 +44,21 @@ button {
 .weapon{
     background-color: #b9050e;
 }
+.armour{
+    background-color: #43B3AE;
+}
+.keyItem{
+    background-color: #ff9500;
+}
 .inspect {
     cursor: pointer;
     background-color: #ff4f00;
 }
 .interact {
     background-color: #43B3AE;
+    cursor: pointer;
+}
+.inventoryItem{
     cursor: pointer;
 }
 .item {

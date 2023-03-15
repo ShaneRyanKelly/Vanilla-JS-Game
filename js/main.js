@@ -17,6 +17,7 @@ var dialogueTree;
 var inBattle = false;
 var player;
 var enemy;
+var selectedItem;
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -41,6 +42,13 @@ function createEventListeners(){
         for (var j = 0; j < elements.length; j++){
             elements[j].addEventListener("click", displayInfo);
         }
+    }
+}
+
+function createInventoryListeners(){
+    var elements = document.getElementsByClassName('inventoryItem');
+    for (var i = 0; i < elements.length; i++){
+        elements[i].addEventListener("click", selectItem)
     }
 }
 
@@ -90,10 +98,12 @@ function displayInfo(event){
 function displayInventory(){
     getId("infoBox").innerHTML = "";
     getId("textBox").innerHTML = "<h1>Inventory</h1>";
+    getId("menuBar").innerHTML = "";
     getActionBar("inventory");
     for (const element in inventory){
-        getId("textBox").innerHTML += "<p id='" + inventory[element]["id"] + "' class='" + inventory[element]["class"] + "'>" + inventory[element]["title"] + " - " + inventory[element]["quantity"] + "</p>";
+        getId("textBox").innerHTML += "<p id='" + inventory[element]["id"] + "' class='" + inventory[element]["class"] + " inventoryItem'>" + inventory[element]["title"] + " - " + inventory[element]["quantity"] + "</p>";
     }
+    createInventoryListeners();
 }
 
 function displayJournal(){
@@ -167,6 +177,23 @@ function doAction(event){
         player["selectedAction"] = "attack";
         handleTurn();
     }
+    else if (event.target.id == "equipButton"){
+        equipItem();
+    }
+}
+
+function equipItem(){
+    console.log(selectedItem);
+    if (items[selectedItem]["class"] == "weapon"){
+        player["weapon"] = selectedItem;
+        player["attack"] = items[selectedItem]["attack"];
+    }
+    if (items[selectedItem]["class"] == "armour"){
+        player["armour"] = selectedItem;
+        player["defense"] = items[selectedItem]["defense"];
+        player["evasion"] = items[selectedItem]["evasion"];
+    }
+    console.log(player);
 }
 
 function executeActions(characters){
@@ -283,6 +310,10 @@ function pickUpItem(){
 function scrollDown(){
     var textBox = document.body;
     textBox.scrollTop = textBox.scrollHeight;
+}
+
+function selectItem(event){
+    selectedItem = event.target.id;
 }
 
 function showInspect(){

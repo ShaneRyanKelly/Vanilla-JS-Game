@@ -1,10 +1,10 @@
 {
     "demoArmour": {
         "id": "demoArmour",
-        "title": "Demo Weapon",
+        "title": "Demo Armour",
         "class": "armour",
-        "defense": 13,
-        "evasion": 3,
+        "defense": 33,
+        "evasion": 33,
         "buyPrice": 10,
         "sellPrice": 5,
         "quantity": 0
@@ -21,7 +21,7 @@
         "id": "demoWeapon",
         "title": "Demo Weapon",
         "class": "weapon",
-        "attack": 13,
+        "attack": 333,
         "buyPrice": 10,
         "sellPrice": 5,
         "quantity": 0
