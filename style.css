@@ -61,6 +61,9 @@ button {
 .inventoryItem{
     cursor: pointer;
 }
+.equipItem{
+    cursor: pointer;
+}
 .item {
     background-color: #ff9500;
     cursor: pointer;
