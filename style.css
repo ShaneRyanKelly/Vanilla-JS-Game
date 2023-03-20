@@ -4,6 +4,10 @@ body {
     cursor: default;
     overflow: auto;
 }
+table{
+    margin-left: auto;
+    margin-right: auto;
+}
 #infoBox {
     background-color: black;
     color: aliceblue;

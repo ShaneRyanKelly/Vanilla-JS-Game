@@ -148,11 +148,7 @@ function displayStatus(){
     textBox.innerHTML += "<p>" + player["description"] + "</p>";
     textBox.innerHTML += "<img src='" + player["imagePath"] + "' />";
     textBox.innerHTML += "<h2><b>Attributes</b></h2>"
-    textBox.innerHTML += "<b>Attack:</b> " + player["attack"] + "<br>";
-    textBox.innerHTML += "<b>Defense: </b>" + player["defense"] + "<br>";
-    textBox.innerHTML += "<b>Evasion: </b>" + player["evasion"] + "<br>";
-    textBox.innerHTML += "<b>HP: </b>" + player["hp"] + "<br>";
-    textBox.innerHTML += "<b>MP: </b>" + player["mp"] + "<br>";
+    textBox.innerHTML += "<table><tr><td><b>Attack:</b>" + player["attack"] + "</td>" + "<td><b>Defense: </b>" + player["defense"] + "</td>" + "<td><b>Evasion: </b>" + player["evasion"] + "</td></tr>" + "<tr><td><b>HP: </b>" + player["hp"] + "</td>" + "<td><b>MP: </b>" + player["mp"] + "</td>" + "<td><b>Sanity: </b>" + player["sanity"] + "</td></tr>" + "<tr><td><b>Strength: </b>" + player["strength"] + "</td>" + "<td><b>Reslilience: </b>" + player["resilience"] + "</td>" + "<td><b>Agility: </b>" + player["agility"] + "</td></tr>" + "<tr><td><b>Wisdom: </b>" + player["wisdom"] + "</td>" + "<td><b>Luck: </b>" + player["luck"] + "</td>" + "<td><b>Deftness: </b>" + player["deftness"] + "</td></tr>" + "<tr><td><b>Charm: </b>" + player["charm"] + "</td>" + "<td><b>Magical Might: </b>" + player["magicalMight"] + "</td>" + "<td><b>Magical Mending: </b>" + player["magicalMending"] + "</td></tr></table>";
     textBox.innerHTML += "<h2><b>Equipment</b></h2>"
 }
 

@@ -9,6 +9,7 @@
         "evasion": "0",
         "hp": "333",
         "mp": "33",
+        "sanity": "100",
         "strength": "33",
         "resilience": "33",
         "agility": "33",
