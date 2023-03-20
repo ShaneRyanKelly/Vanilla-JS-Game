@@ -1,7 +1,7 @@
 {
     "player": {
         "name": "Shane",
-        "imagePath": "./assets/enemies/demoEnemy.png",
+        "imagePath": "./assets/characters/demoCharacter.png",
         "weapon": "",
         "armour": "",
         "attack": "0",

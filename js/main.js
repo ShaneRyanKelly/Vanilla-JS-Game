@@ -140,6 +140,22 @@ function displayScene(){
     createEventListeners();
 }
 
+function displayStatus(){
+    getId("infoBox").innerHTML = "";
+    var textBox = getId("textBox");
+    getActionBar("status");
+    textBox.innerHTML = "<h1><b>" + player["name"] + "</b></h1>"; 
+    textBox.innerHTML += "<p>" + player["description"] + "</p>";
+    textBox.innerHTML += "<img src='" + player["imagePath"] + "' />";
+    textBox.innerHTML += "<h2><b>Attributes</b></h2>"
+    textBox.innerHTML += "<b>Attack:</b> " + player["attack"] + "<br>";
+    textBox.innerHTML += "<b>Defense: </b>" + player["defense"] + "<br>";
+    textBox.innerHTML += "<b>Evasion: </b>" + player["evasion"] + "<br>";
+    textBox.innerHTML += "<b>HP: </b>" + player["hp"] + "<br>";
+    textBox.innerHTML += "<b>MP: </b>" + player["mp"] + "<br>";
+    textBox.innerHTML += "<h2><b>Equipment</b></h2>"
+}
+
 function displayUi(event){
     var currentTarget = event.target;
     console.log(event);
