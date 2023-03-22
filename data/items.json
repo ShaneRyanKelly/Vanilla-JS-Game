@@ -1,7 +1,18 @@
 {
+    "demoAccessory": {
+        "id": "demoAccessory",
+        "name": "Demo Accessory",
+        "class": "accessory",
+        "attack": 0,
+        "defense": 33,
+        "evasion": 33,
+        "buyPrice": 10,
+        "sellPrice": 5,
+        "quantity": 0
+    },
     "demoArmour": {
         "id": "demoArmour",
-        "title": "Demo Armour",
+        "name": "Demo Armour",
         "class": "armour",
         "defense": 33,
         "evasion": 33,
@@ -11,7 +22,7 @@
     },
     "demoItem": {
         "id": "demoItem",
-        "title": "Demo Item",
+        "name": "Demo Item",
         "class": "consumable",
         "buyPrice": 5,
         "sellPrice": 2,
@@ -19,11 +30,20 @@
     },
     "demoWeapon": {
         "id": "demoWeapon",
-        "title": "Demo Weapon",
+        "name": "Demo Weapon",
         "class": "weapon",
         "attack": 333,
         "buyPrice": 10,
         "sellPrice": 5,
+        "quantity": 0
+    },
+    "none": {
+        "id": "none",
+        "name": "None",
+        "class": "weapon",
+        "attack": 0,
+        "buyPrice": 0,
+        "sellPrice": 0,
         "quantity": 0
     }
 }

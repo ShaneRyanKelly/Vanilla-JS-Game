@@ -2,8 +2,9 @@
     "player": {
         "name": "Shane",
         "imagePath": "./assets/characters/demoCharacter.png",
-        "weapon": "",
-        "armour": "",
+        "weapon": "none",
+        "armour": "none",
+        "accessory": "none",
         "attack": "0",
         "defense": "0",
         "evasion": "0",
