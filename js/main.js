@@ -90,7 +90,7 @@ function displayEquip(){
     getId("textBox").innerHTML = "<h1>Equipment</h1>";
     getId("menuBar").innerHTML = "";
     getActionBar("equip");
-    for (var element in items){
+    for (var element in inventory){
         console.log(element);
         if (items[element]["class"] == "weapon" || items[element]["class"] == "armour"){
             var newEquipment = items[element];
@@ -182,6 +182,12 @@ function doAction(event){
         getId("actionBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
         triggerEvent();
+        displayScene();
+        getMainMenuBar("core");
+    }
+    else if (event.target.id == "escapeButton"){
+        getId("actionBar").innerHTML = "";
+        getId("infoBox").innerHTML = "";
         displayScene();
         getMainMenuBar("core");
     }

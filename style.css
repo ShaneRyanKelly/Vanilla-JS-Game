@@ -89,6 +89,10 @@ button {
 #equipButton {
     background-color: #bc5505;
 }
+#escapeButton {
+    background-color: #000000;
+    color: #ffffff;
+}
 #skillButton {
     background-color: #ff4f00;
 }
