@@ -24,6 +24,7 @@
         "id": "demoItem",
         "name": "Demo Item",
         "class": "consumable",
+        "effect": "Demonstrates the effects of [ITEMS]",
         "buyPrice": 5,
         "sellPrice": 2,
         "quantity": 0

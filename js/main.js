@@ -239,7 +239,8 @@ function equipItem(){
         player["defense"] = items[selectedItem]["defense"];
         player["evasion"] = items[selectedItem]["evasion"];
     }
-    console.log(player);
+    displayInventory();
+    getId("infoBox").innerHTML = items[selectedItem]["name"] + " equipped!";
 }
 
 function executeActions(characters){
@@ -363,7 +364,20 @@ function scrollDown(){
 }
 
 function selectItem(event){
+    displayInventory();
     selectedItem = event.target.id;
+    console.log(selectedItem);
+    getId("infoBox").innerHTML = "<p>" + items[selectedItem]["name"] + ": " + infos[selectedItem]["description"] + "</p>";
+    if (items[selectedItem]["class"] == "consumable"){
+        getId(selectedItem).innerHTML += "<p>" + items[selectedItem]["effect"] + "</p>";
+    }
+    else if (items[selectedItem]["class"] == "weapon"){
+        getId(selectedItem).innerHTML += "<p><b>[ATTACK]: </b>: " + items[selectedItem]["attack"] + "</p>";
+    }
+    else if (items[selectedItem]["class"] == "armour"){
+        getId(selectedItem).innerHTML += "<p><b>[DEFENSE]:</b> " + items[selectedItem]["defense"] + "    <b>[EVASION]:</b> " + items[selectedItem]["evasion"] + "</p>";
+    }
+    
 }
 
 function showInspect(){

@@ -46,7 +46,7 @@
                 }
             },
             "dialogueMods":{},
-            "journal": "I look brilliant in my shining armour!"
+            "journal": "<p>I found a Demo Weapon!</p>"
         },
         "demoArmour":{
             "mods": {
@@ -67,7 +67,7 @@
                 }
             },
             "dialogueMods":{},
-            "journal": "I am fully equipped!"
+            "journal": "<p>I found Demo Armour. I am fully equipped!</p>"
         },
         "nextDialogue":{
             "mods": {
