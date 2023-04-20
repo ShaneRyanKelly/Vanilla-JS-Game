@@ -35,6 +35,14 @@ function createDialogueListeners(){
     }
 }
 
+function createEquipListeners(){
+    var elements = document.getElementsByClassName('equipSlot');
+    
+    for (var i = 0; i < elements.length; i++){
+        elements[i].addEventListener("click", selectEquip);
+    }
+}
+
 function createEventListeners(){
     var elements;
     for ( var i = 0; i < classTypes.length; i++ ){
@@ -86,6 +94,17 @@ function displayDialogue(){
 }
 
 function displayEquip(){
+    getActionBar("status");
+    getId("infoBox").innerHTML = "";
+    getId("textBox").innerHTML = "<h1>Equipment</h1>";
+    getId("menuBar").innerHTML = "";
+    getId("textBox").innerHTML += "<p id='weapon' class='equipSlot'>[WEAPON]: " + player["weapon"] + "</p>";
+    getId("textBox").innerHTML += "<p id='armour' class='equipSlot'>[ARMOUR]: " + player["armour"] + "</p>";
+    getId("textBox").innerHTML += "<p id='accessory' class='equipSlot'>[ACCESSORY]: " + player["accessory"] + "</p>";
+    createEquipListeners();
+}
+
+function displayEquip0(){
     getId("infoBox").innerHTML = "";
     getId("textBox").innerHTML = "<h1>Equipment</h1>";
     getId("menuBar").innerHTML = "";
@@ -94,10 +113,10 @@ function displayEquip(){
         console.log(element);
         if (items[element]["class"] == "weapon" || items[element]["class"] == "armour"){
             var newEquipment = items[element];
-            getId("infoBox").innerHTML += "<h3 id='" + newEquipment["id"] + "' class='inventoryItem'>" + newEquipment["name"] + "</h3>"
+            getId("infoBox").innerHTML += "<h3 id='" + newEquipment["id"] + "' class='equipItem'>" + newEquipment["name"] + "</h3>"
         }
     }
-    createInventoryListeners();
+    createEquipListeners();
 }
 
 function displayInfo(event){
@@ -234,8 +253,14 @@ function equipItem(){
         player["weapon"] = selectedItem;
         player["attack"] = items[selectedItem]["attack"];
     }
-    if (items[selectedItem]["class"] == "armour"){
+    else if (items[selectedItem]["class"] == "armour"){
         player["armour"] = selectedItem;
+        player["defense"] = items[selectedItem]["defense"];
+        player["evasion"] = items[selectedItem]["evasion"];
+    }
+    else if (items[selectedItem]["class"] == "accessory"){
+        player["accessory"] = selectedItem;
+        player["attack"] = items[selectedItem]["attack"];
         player["defense"] = items[selectedItem]["defense"];
         player["evasion"] = items[selectedItem]["evasion"];
     }
@@ -361,6 +386,51 @@ function pickUpItem(){
 function scrollDown(){
     var textBox = document.body;
     textBox.scrollTop = textBox.scrollHeight;
+}
+
+function getStatDifference(newItem, oldItem){
+    if (items[newItem]["class"] == "weapon"){
+        var difference = items[newItem]["attack"] - items[oldItem]["attack"];
+        if (difference >= 0){
+            return "+" + difference;
+        }
+        else {
+            return "-" + difference;
+        }
+    }
+    else if (items[newItem]["class"] == "armour"){
+        var defDifference = items[newItem]["defense"] - items[oldItem]["defense"];
+        var evaDifference = items[newItem]["evasion"] - items[oldItem]["evasion"];
+        if (defDifference > 0)
+            defDifference = "+" + defDifference;
+        else
+            defDifference = "-" + defDifference;
+        if (evaDifference > 0)
+            evaDifference = "+" + evaDifference;
+        else
+            evaDifference = "-" + evaDifference;
+
+        return defDifference + ", " + evaDifference;
+    }
+}
+
+function selectEquip(event){
+    console.log("select");
+    var itemClass = event.target.id;
+    console.log(itemClass);
+    for (var element in inventory){
+        if (inventory[element]["class"] == itemClass && itemClass == "weapon"){
+            getId("infoBox").innerHTML = "<p id='" + inventory[element]["id"] + "' class='equipItem'><b>" + inventory[element]["name"] + ": </b>Attack: " + inventory[element]["attack"] + " (" + getStatDifference(inventory[element]["id"], player["weapon"]) + ")</p>";
+        }
+        else if (inventory[element]["class"] == itemClass && itemClass == "armour"){
+            getId("infoBox").innerHTML = "<p id='" + inventory[element]["id"] + "' class='equipItem'><b>" + inventory[element]["name"] + ": </b>Defense: " + inventory[element]["defense"] + " <b>Evasion: </b> " + inventory[element]["evasion"] + " (" + getStatDifference(inventory[element]["id"], player["armour"]) + ")</p>";
+        }
+        else if (inventory[element]["class"] == itemClass && itemClass == "accessory"){
+            getId("infoBox").innerHTML = "<p id='" + inventory[element]["id"] + "' class='equipItem'><b>" + inventory[element]["name"] + ": </b>Attack: " + inventory[element]["attack"] + " (" + getStatDifference(inventory[element]["id"], player["weapon"]) + ")</p>";
+        }
+    }
+    createEquipListeners();
+    createEquipItemListeners();
 }
 
 function selectItem(event){
