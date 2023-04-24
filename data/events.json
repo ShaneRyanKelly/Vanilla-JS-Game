@@ -55,19 +55,35 @@
                     "index": "demoItem_1",
                     "text": "<p>Now that you have a [WEAPON] and [ARMOUR] go ahead and equip them by either clicking [EQUIP] to open the [EQUIP] menu or you may equip from the [INVENTORY].</p>"
                 },
-                "2":{
+                "1":{
+                    "scene": "demo",
+                    "index": "demoItem_2",
+                    "text": "<p>Additionally, you will discover a number of [ITEMS] which can be used to interact with elements in the [SCENE]. These [ITEMS] are known as [KEYS] and are used as an alternative method of triggering [EVENTS] to modify scenes and dialogue. Here is the <span id='primaryKey' class='item'>Primary Key</span> take it, it may be useful in the future.</p>"
+                }
+            },
+            "dialogueMods":{},
+            "journal": "<p>I found my first key! I wonder what it does.</p>"
+        },
+        "primaryKey": {
+            "mods": {
+                "0":{
                     "scene": "demo",
                     "index": "dialogueSystem",
                     "text": "<p>Jellybean also comes equipped with a full fledged dialogue system!</p>"
                 },
-                "3":{
+                "1":{
                     "scene": "demo",
                     "index": "demoCharacter",
                     "text": "<p>[CHARACTERS] contain unique dialogue trees which are modifiable by [EVENTS]. Why not check it out and say 'Hello!' to <span id='jellyBean' class='character'>JB</span>! To talk to a [CHARACTER] click on their name and then click [TALK] on the [ACTION BAR].</p>"
+                },
+                "2":{
+                    "scene": "demo",
+                    "index": "demoItem_2",
+                    "text": ""
                 }
             },
-            "dialogueMods":{},
-            "journal": "<p>I found Demo Armour. I am fully equipped!</p>"
+            "dialogueMods": {},
+            "journal": ""
         },
         "nextDialogue":{
             "mods": {

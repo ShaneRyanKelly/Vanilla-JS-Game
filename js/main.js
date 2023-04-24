@@ -454,8 +454,7 @@ function pickUpItem(){
 }
 
 function scrollDown(){
-    var textBox = document.body;
-    textBox.scrollTop = textBox.scrollHeight;
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 function getStatDifference(newItem, oldItem){

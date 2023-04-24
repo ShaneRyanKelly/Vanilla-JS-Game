@@ -38,6 +38,13 @@
         "sellPrice": 5,
         "quantity": 0
     },
+    "primaryKey": {
+        "id": "primaryKey",
+        "name": "Primary Key",
+        "class": "key",
+        "unlocks": "primaryDoor",
+        "quantity": 0
+    },
     "none": {
         "id": "none",
         "name": "None",
