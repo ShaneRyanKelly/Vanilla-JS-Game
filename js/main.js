@@ -157,7 +157,13 @@ function displayInventory(){
     getId("infoBox").innerHTML = "";
     getId("textBox").innerHTML = "<h1>Inventory</h1>";
     getId("menuBar").innerHTML = "";
-    getActionBar("inventory");
+    if (inBattle){
+        getActionBar("battleInventory");
+    }
+    else{
+        getActionBar("inventory");
+    }
+
     for (const element in inventory){
         getId("textBox").innerHTML += "<p id='" + inventory[element]["id"] + "' class='" + inventory[element]["class"] + " inventoryItem'>" + inventory[element]["name"] + " - " + inventory[element]["quantity"] + "</p>";
     }
@@ -233,7 +239,7 @@ function doAction(event){
         displayScene();
         getMainMenuBar("core");
     }
-    else if (event.target.id == "exitEquip"){
+    else if (event.target.id == "exitToBattleButton"){
         getId("actionBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
         displayBattleOngoing()
@@ -299,6 +305,13 @@ function equipItem(){
         player["evasion"] = items[selectedItem]["evasion"];
     }
     displayInventory();
+    if (inBattle){
+        getActionBar("battleInventory")
+    }
+    else {
+        getActionBar("inventory")
+
+    }
     getId("infoBox").innerHTML = items[selectedItem]["name"] + " equipped!";
 }
 
@@ -510,6 +523,9 @@ function selectItem(event){
         getId(selectedItem).innerHTML += "<p><b>[ATTACK]: </b>: " + items[selectedItem]["attack"] + "</p>";
     }
     else if (items[selectedItem]["class"] == "armour"){
+        getId(selectedItem).innerHTML += "<p><b>[DEFENSE]:</b> " + items[selectedItem]["defense"] + "    <b>[EVASION]:</b> " + items[selectedItem]["evasion"] + "</p>";
+    }
+    else if (items[selectedItem]["class"] == "accessory"){
         getId(selectedItem).innerHTML += "<p><b>[DEFENSE]:</b> " + items[selectedItem]["defense"] + "    <b>[EVASION]:</b> " + items[selectedItem]["evasion"] + "</p>";
     }
     
