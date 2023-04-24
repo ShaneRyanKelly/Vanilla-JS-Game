@@ -18,6 +18,7 @@ var inBattle = false;
 var player;
 var enemy;
 var selectedItem;
+var ongoingBattle;
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -40,6 +41,14 @@ function createEquipListeners(){
     
     for (var i = 0; i < elements.length; i++){
         elements[i].addEventListener("click", selectEquip);
+    }
+}
+
+function createEquipItemListeners(){
+    var elements = document.getElementsByClassName("equipItem");
+
+    for (var i = 0; i < elements.length; i++){
+        elements[i].addEventListener("click", selectEquipItem);
     }
 }
 
@@ -71,10 +80,19 @@ function displayBattle(){
     console.log('battlebutton clicked!');
     inBattle = true;
     getActionBar("battle");
+    createUiListeners();
     var textBox = getId("textBox");
     enemy = enemies[currentTarget.id.split("_")[0]];
     textBox.innerHTML = "<h1>" + enemy["name"] + "</h1>";
     textBox.innerHTML += "<img src='" + enemy["imagePath"] + "' />";
+    ongoingBattle = textBox.innerHTML;
+}
+
+function displayBattleOngoing(){
+    getActionBar("battle");
+    createUiListeners();
+    var textBox = getId("textBox");
+    textBox.innerHTML = ongoingBattle;
 }
 
 function displayDialogue(){
@@ -94,13 +112,19 @@ function displayDialogue(){
 }
 
 function displayEquip(){
-    getActionBar("status");
+    if (inBattle){
+        getActionBar("exitToBattle");
+    }
+    else{
+        getActionBar("status");
+    }
+
     getId("infoBox").innerHTML = "";
     getId("textBox").innerHTML = "<h1>Equipment</h1>";
     getId("menuBar").innerHTML = "";
-    getId("textBox").innerHTML += "<p id='weapon' class='equipSlot'>[WEAPON]: " + player["weapon"] + "</p>";
-    getId("textBox").innerHTML += "<p id='armour' class='equipSlot'>[ARMOUR]: " + player["armour"] + "</p>";
-    getId("textBox").innerHTML += "<p id='accessory' class='equipSlot'>[ACCESSORY]: " + player["accessory"] + "</p>";
+    getId("textBox").innerHTML += "<p id='weapon' class='equipSlot'>[WEAPON]: " + items[player["weapon"]]["name"] + "</p>";
+    getId("textBox").innerHTML += "<p id='armour' class='equipSlot'>[ARMOUR]: " + items[player["armour"]]["name"] + "</p>";
+    getId("textBox").innerHTML += "<p id='accessory' class='equipSlot'>[ACCESSORY]: " + items[player["accessory"]]["name"] + "</p>";
     createEquipListeners();
 }
 
@@ -209,9 +233,15 @@ function doAction(event){
         displayScene();
         getMainMenuBar("core");
     }
+    else if (event.target.id == "exitEquip"){
+        getId("actionBar").innerHTML = "";
+        getId("infoBox").innerHTML = "";
+        displayBattleOngoing()
+    }
     else if (event.target.id == "escapeButton"){
         getId("actionBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
+        inBattle = false;
         displayScene();
         getMainMenuBar("core");
     }
@@ -246,9 +276,13 @@ function doAction(event){
     else if (event.target.id == "equipButton"){
         equipItem();
     }
+    else if (event.target.id == "equipItemButton"){
+        equipItemToo();
+    }
 }
 
 function equipItem(){
+    console.log(selectedItem);
     if (items[selectedItem]["class"] == "weapon"){
         player["weapon"] = selectedItem;
         player["attack"] = items[selectedItem]["attack"];
@@ -268,6 +302,27 @@ function equipItem(){
     getId("infoBox").innerHTML = items[selectedItem]["name"] + " equipped!";
 }
 
+function equipItemToo(){
+    console.log(selectedItem);
+    if (items[selectedItem]["class"] == "weapon"){
+        player["weapon"] = selectedItem;
+        player["attack"] = items[selectedItem]["attack"];
+    }
+    else if (items[selectedItem]["class"] == "armour"){
+        player["armour"] = selectedItem;
+        player["defense"] = items[selectedItem]["defense"];
+        player["evasion"] = items[selectedItem]["evasion"];
+    }
+    else if (items[selectedItem]["class"] == "accessory"){
+        player["accessory"] = selectedItem;
+        player["attack"] = items[selectedItem]["attack"];
+        player["defense"] = items[selectedItem]["defense"];
+        player["evasion"] = items[selectedItem]["evasion"];
+    }
+    displayEquip();
+    getId("infoBox").innerHTML = items[selectedItem]["name"] + " equipped!";
+}
+
 function executeActions(characters){
     console.log(characters);
     var textBox = getId("textBox");
@@ -275,11 +330,13 @@ function executeActions(characters){
         if (characters[i]["selectedAction"] == "attack"){
             var damage = getAttackDamage(characters[i]);
             textBox.innerHTML += "<p>" + characters[i]["name"] + " attacks dealing " + damage + " damage!</p>"
+            ongoingBattle = textBox.innerHTML;
             scrollDown();
         }
         characters[i]["target"]["hp"] -= damage;
         if (characters[i]["target"]["hp"] <= 0){
             textBox.innerHTML += characters[i]["name"] + " defeated " + characters[i]["target"]["name"] + "!";
+            ongoingBattle = textBox.innerHTML;
             getActionBar("exitBattle");
             inBattle = false;
             break;
@@ -415,8 +472,10 @@ function getStatDifference(newItem, oldItem){
 }
 
 function selectEquip(event){
-    console.log("select");
+    selectedItem = event.target;
+    console.log("item" + selectedItem);
     var itemClass = event.target.id;
+
     console.log(itemClass);
     for (var element in inventory){
         if (inventory[element]["class"] == itemClass && itemClass == "weapon"){
@@ -431,6 +490,12 @@ function selectEquip(event){
     }
     createEquipListeners();
     createEquipItemListeners();
+    createActionListeners();
+}
+
+function selectEquipItem(event){
+    getActionBar("equip");
+    selectedItem = event.target.id;
 }
 
 function selectItem(event){

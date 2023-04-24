@@ -8,8 +8,9 @@
     "character": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='talkButton' class='actionButton'>Talk</button>",
     "dialogue": "<button id='exitButton' class='actionButton'>Exit</button>",
     "enemy": "<button id='inspectButton' class='actionButton'>Inspect</button><button id='battleButton' class='actionButton'>Battle</button>",
-    "equip": "<button id='equipButton' class='actionButton'>Equip</button><button id='exitButton' class='actionButton'>Exit</button>",
-    "battle": "<button id='attackButton' class='actionButton'>Attack</button><button id='skillButton' class='actionButton'>Skill</button><button id='magicButton' class='actionButton'>Magic</button><button id='equipButton' class='actionButton'>Equip</button><button id='statusButton' class='actionButton'>Status</button><button id='itemButton' class='actionButton'>Item</button><button id='escapeButton' class='actionButton'>Escape</button>",
+    "equip": "<button id='equipItemButton' class='actionButton'>Equip</button><button id='removeButton' class='actionButton'>Remove</button><button id='exitButton' class='actionButton'>Exit</button>",
+    "exitToBattle": "<button id='exitEquip' class='actionButton'>Exit</button>",
+    "battle": "<button id='attackButton' class='actionButton'>Attack</button><button id='skillButton' class='actionButton'>Skill</button><button id='magicButton' class='actionButton'>Magic</button><button id='equipButton' class='uiButton'>Equip</button><button id='statusButton' class='actionButton'>Status</button><button id='itemButton' class='actionButton'>Item</button><button id='escapeButton' class='actionButton'>Escape</button>",
     "exitBattle": "<button id='exitBattle' class='actionButton'>Exit</button>",
     "status": "<button id='exitButton' class='actionButton'>Exit</button>"
 }
