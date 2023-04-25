@@ -41,7 +41,8 @@
     "primaryKey": {
         "id": "primaryKey",
         "name": "Primary Key",
-        "class": "key",
+        "class": "keyItem",
+        "effect": "Unlocks a door.",
         "unlocks": "primaryDoor",
         "quantity": 0
     },

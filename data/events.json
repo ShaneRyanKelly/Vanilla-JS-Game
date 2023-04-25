@@ -58,7 +58,7 @@
                 "1":{
                     "scene": "demo",
                     "index": "demoItem_2",
-                    "text": "<p>Additionally, you will discover a number of [ITEMS] which can be used to interact with elements in the [SCENE]. These [ITEMS] are known as [KEYS] and are used as an alternative method of triggering [EVENTS] to modify scenes and dialogue. Here is the <span id='primaryKey' class='item'>Primary Key</span> take it, it may be useful in the future.</p>"
+                    "text": "<p>Additionally, you will discover a number of [ITEMS] which can be used to interact with elements in the [SCENE]. These [ITEMS] are known as [KEY ITEMS] and are used as an alternative method of triggering [EVENTS] to modify scenes and dialogue. Here is the <span id='primaryKey' class='item'>Primary Key</span> take it, it may be useful in the future.</p>"
                 }
             },
             "dialogueMods":{},
@@ -119,6 +119,11 @@
                     "scene": "demo",
                     "index": "demoCharacter",
                     "text": "<p>Behind you, <span id='jellyBean' class='character'>JB</span> stands smiling serenely, grateful for your victory over the [ENEMY]</p>"
+                },
+                "2": {
+                    "scene": "demo",
+                    "index": "door",
+                    "text": "<p>Just ahead is a <span id='door' class='interact'>large black door</span> with a brass door knob.</p>"
                 }
             },
             "dialogueMods":{
@@ -132,7 +137,7 @@
                     "character": "jellyBean",
                     "index": "greeting",
                     "response": "response0",
-                    "text": "<button id='lastDialogue' class='dialogueButton'>Please, hold your applause, it was nothing.</button>"
+                    "text": "<button id='keyItem' class='dialogueButton'>Please, hold your applause, it was nothing. So, what should I do now?</button>"
                 },
                 "2":{
                     "character": "jellyBean",

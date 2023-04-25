@@ -19,6 +19,7 @@ var player;
 var enemy;
 var selectedItem;
 var ongoingBattle;
+var currentScreen;
 
 document.addEventListener("DOMContentLoaded", main);
 
@@ -210,15 +211,19 @@ function displayUi(event){
     var currentTarget = event.target;
     console.log(event);
     if (currentTarget.id == "journalButton"){
+        currentScreen = "journal";
         displayJournal();
     }
     else if (currentTarget.id == "equipButton"){
+        currentScreen = "equip";
         displayEquip()
     }
     else if (currentTarget.id == "inventoryButton"){
+        currentScreen = "inventory";
         displayInventory();
     }
     else if (currentTarget.id == "statusButton"){
+        currentScreen = "status";
         displayStatus();
     }
 }
@@ -256,7 +261,14 @@ function doAction(event){
     }
     else if (event.target.id == "interactButton"){
         getId("actionBar").innerHTML = "";
-        triggerEvent();
+
+        if (infos[currentTarget.id]["status"] == "locked"){
+            var infoBox = getId("infoBox");
+            infoBox.innerHTML = infos[currentTarget.id]["info"];
+        }
+        else{
+            triggerEvent();
+        }
     }
     else if (event.target.id == "pickUpButton"){
         getId("actionBar").innerHTML = "";
@@ -267,12 +279,14 @@ function doAction(event){
         getId("actionBar").innerHTML = "";
         getId("menuBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
+        currentScreen = "dialogue";
         displayDialogue();
     }
     else if (event.target.id == "battleButton"){
         getId("actionBar").innerHTML = "";
         getId("menuBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
+        currentScreen = "battle";
         displayBattle();
     }
     else if (event.target.id == "attackButton"){
@@ -307,7 +321,11 @@ function equipItem(){
         player["defense"] = items[selectedItem]["defense"];
         player["evasion"] = items[selectedItem]["evasion"];
     }
-    displayInventory();
+    if (currentScreen == "inventory")
+        displayInventory();
+    else
+        displayEquip();
+
     if (inBattle){
         getActionBar("battleInventory")
     }
@@ -518,7 +536,7 @@ function selectItem(event){
     selectedItem = event.target.id;
     console.log(selectedItem);
     getId("infoBox").innerHTML = "<p>" + items[selectedItem]["name"] + ": " + infos[selectedItem]["description"] + "</p>";
-    if (items[selectedItem]["class"] == "consumable"){
+    if (items[selectedItem]["class"] == "consumable" || items[selectedItem]["class"] == "keyItem"){
         getId(selectedItem).innerHTML += "<p>" + items[selectedItem]["effect"] + "</p>";
     }
     else if (items[selectedItem]["class"] == "weapon"){

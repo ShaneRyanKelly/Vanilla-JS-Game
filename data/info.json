@@ -17,7 +17,8 @@
     },
     "demoInteract": {
         "description": "A sample interactable element.",
-        "info": "Interacting with the object reveals hidden text!"
+        "info": "Interacting with the object reveals hidden text!",
+        "status": "open"
     },
     "demoItem": {
         "description": "A sample item.",
@@ -26,6 +27,11 @@
     "demoWeapon": {
         "description": "A sample Weapon.",
         "info": "It looks sharp."
+    },
+    "door":{
+        "description": "It must weigh a ton, it won't budge.",
+        "info": "The door is locked.",
+        "status": "locked"
     },
     "jellyBean": {
         "description": "A sample character.",

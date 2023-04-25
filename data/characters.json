@@ -46,6 +46,10 @@
             "dialogueExample":{
                 "prompt": "<p>[DIALOGUES] have the following structure:<br><br><pre class='snippet'>'jellyBean':{        <br>    'name': 'Jellybean',        <br>    'nickName': 'JB',        <br>    'dialogue':{            <br>        'greeting': {                <br>            'prompt': '&lt;p>Hello!!&lt;/p>',                <br>            'response0': '&lt;button id='nextDialogue' class='dialogueButton'>Pleased to meet you!&lt;/button>'                <br>        },                <br>        'nextDialogue': {                <br>            'prompt': '&lt;p>[DIALOGUES] are a neat way to tell a story!&lt;/p>',                <br>            'response0': '&lt;button id='thirdDialogue' class='dialogueButton'>Agreed.&lt;/button>',                <br>            'response1': '&lt;button id='greeting' class='dialogueButton'>Let's go back to the top.&lt;/button>'            <br>        }        <br>    }    <br>}</pre></p><p>[DIALOGUES] are structured according to similar rules to the other data formats used by JellyBean. [DIALOGUES] trigger events be naming an [EVENT] the same title as that [DIALOGUE] node. For example if you created an [EVENT] called 'nextDialogue' will cause an [EVENT] to trigger when that option is selected.</p>",
                 "response0": "<button id='greeting' class='dialogueButton'>Let's talk about something else...</button>"
+            },
+            "keyItem":{
+                "prompt": "<p>Do you remember the [KEY ITEM] you found before? There's a door over there, maybe the key will work on it? To use a [KEY ITEM] open your [INVENTORY] and select the [KEY ITEM] you would like to use, then just click use and you will be returned to the [SCENE] view. From the [SCENE] view click on the element you would like to interact with, and check the info pane to see if it worked!</p>",
+                "response0": "<button id='lastDialogue' class='dialogueButton'>Alright, I'll give it a try.</button>"
             }
         }
     }
