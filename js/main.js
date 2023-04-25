@@ -283,7 +283,10 @@ function doAction(event){
         equipItem();
     }
     else if (event.target.id == "equipItemButton"){
-        equipItemToo();
+        if (inBattle)
+            equipItemToo();
+        else
+            equipItem();
     }
 }
 
@@ -520,14 +523,17 @@ function selectItem(event){
     }
     else if (items[selectedItem]["class"] == "weapon"){
         getId(selectedItem).innerHTML += "<p><b>[ATTACK]: </b>: " + items[selectedItem]["attack"] + "</p>";
+        getActionBar("equip");
     }
     else if (items[selectedItem]["class"] == "armour"){
         getId(selectedItem).innerHTML += "<p><b>[DEFENSE]:</b> " + items[selectedItem]["defense"] + "    <b>[EVASION]:</b> " + items[selectedItem]["evasion"] + "</p>";
+        getActionBar("equip");
     }
     else if (items[selectedItem]["class"] == "accessory"){
         getId(selectedItem).innerHTML += "<p><b>[DEFENSE]:</b> " + items[selectedItem]["defense"] + "    <b>[EVASION]:</b> " + items[selectedItem]["evasion"] + "</p>";
+        getActionBar("equip");
     }
-    
+    createActionListeners();
 }
 
 function showInspect(){
