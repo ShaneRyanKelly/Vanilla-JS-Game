@@ -63,6 +63,16 @@ function createEventListeners(){
     }
 }
 
+function createKeyEventListeners(){
+    var elements;
+    for ( var i = 0; i < classTypes.length; i++ ){
+        elements = document.getElementsByClassName(classTypes[i]);
+        for (var j = 0; j < elements.length; j++){
+            elements[j].addEventListener("click", checkKey);
+        }
+    }
+}
+
 function createInventoryListeners(){
     var elements = document.getElementsByClassName('inventoryItem');
     for (var i = 0; i < elements.length; i++){
@@ -152,6 +162,7 @@ function displayInfo(event){
     }
     getActionBar(currentTarget.className);
     getId("infoBox").innerHTML = infos[id]["description"];
+    scrollDown();
 }
 
 function displayInventory(){
@@ -230,7 +241,13 @@ function displayUi(event){
 
 function doAction(event){
     console.log("doaction");
-    if (event.target.id == "exitButton"){
+
+    if (event.target.id == "consumeButton"){
+        getId("actionBar").innerHTML = "";
+        getId("infoBox").innerHTML = "";
+        consumeItem();
+    }
+    else if (event.target.id == "exitButton"){
         getId("actionBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
         //triggerEvent();
@@ -248,6 +265,11 @@ function doAction(event){
         getId("actionBar").innerHTML = "";
         getId("infoBox").innerHTML = "";
         displayBattleOngoing()
+    }
+    else if (event.target.id == "exitToInventoryButton"){
+        getId("actionBar").innerHTML = "";
+        getId("infoBox").innerHTML = "";
+        displayInventory();
     }
     else if (event.target.id == "escapeButton"){
         getId("actionBar").innerHTML = "";
@@ -302,6 +324,24 @@ function doAction(event){
         else
             equipItem();
     }
+    else if (event.target.id == "useButton"){
+        getId("actionBar").innerHTML = "";
+        useKey();
+    }
+}
+
+function checkKey(event){
+    var infoBox = getId("infoBox");
+    currentTarget = event.target;
+    if (selectedItem == infos[event.target.id]["key"]){
+        infoBox.innerHTML = "Success.";
+        getId("actionBar").innerHTML = "";
+        triggerEvent();
+    }
+    else {
+        infoBox.innerHTML = "Failure.";
+    }
+    scrollDown();
 }
 
 function equipItem(){
@@ -536,8 +576,14 @@ function selectItem(event){
     selectedItem = event.target.id;
     console.log(selectedItem);
     getId("infoBox").innerHTML = "<p>" + items[selectedItem]["name"] + ": " + infos[selectedItem]["description"] + "</p>";
-    if (items[selectedItem]["class"] == "consumable" || items[selectedItem]["class"] == "keyItem"){
+
+    if (items[selectedItem]["class"] == "consumable"){
         getId(selectedItem).innerHTML += "<p>" + items[selectedItem]["effect"] + "</p>";
+        getActionBar("consumable");
+    }
+    else if (items[selectedItem]["class"] == "keyItem"){
+        getId(selectedItem).innerHTML += "<p>" + items[selectedItem]["effect"] + "</p>";
+        getActionBar("keyItem");
     }
     else if (items[selectedItem]["class"] == "weapon"){
         getId(selectedItem).innerHTML += "<p><b>[ATTACK]: </b>: " + items[selectedItem]["attack"] + "</p>";
@@ -618,6 +664,21 @@ function triggerDialogueEvent(){
     }*/
     journal.push(newEvent["journal"]);
     scrollDown();
+}
+
+function displayKeyScene(){
+    var descriptions = scenes[currentScene]["description"];
+    getId("textBox").innerHTML = "";
+    for ( var paragraph in descriptions ){
+        getId("textBox").innerHTML += descriptions[paragraph];
+    }
+    createKeyEventListeners();
+    getActionBar("useKey");
+    createActionListeners();
+}
+
+function useKey(){
+    displayKeyScene();
 }
  
 function main(){

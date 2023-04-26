@@ -13,5 +13,9 @@
     "exitToBattle": "<button id='exitToBattleButton' class='actionButton'>Exit</button>",
     "battle": "<button id='attackButton' class='actionButton'>Attack</button><button id='skillButton' class='actionButton'>Skill</button><button id='magicButton' class='actionButton'>Magic</button><button id='equipButton' class='uiButton'>Equip</button><button id='statusButton' class='actionButton'>Status</button><button id='inventoryButton' class='uiButton'>Item</button><button id='escapeButton' class='actionButton'>Escape</button>",
     "exitBattle": "<button id='exitBattle' class='actionButton'>Exit</button>",
-    "status": "<button id='exitButton' class='actionButton'>Exit</button>"
+    "status": "<button id='exitButton' class='actionButton'>Exit</button>",
+    "consumable": "<button id='consumeButton' class='actionButton'>Use</button>",
+    "keyItem": "<button id='useButton' class='actionButton'>Use</button>",
+    "key": "<button id='exitToInventoryButton' class='actionButton'>Exit</button>",
+    "useKey": "<button id='useKey' class='actionButton'>Use</button><button id='exitToInventoryButton' class='actionButton'>Exit</button>"
 }

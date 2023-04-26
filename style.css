@@ -48,6 +48,11 @@ button {
     background-color: #b9050e;
     cursor: pointer;
 }
+.exit {
+    background-color: #000000;
+    color: #ffffff;
+    cursor: pointer;
+}
 .weapon{
     background-color: #b9050e;
 }

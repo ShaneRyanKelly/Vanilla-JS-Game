@@ -1,44 +1,63 @@
 {
     "content": {
         "description": "[SCENE] content includes [INFOS], [INTERACTS], [ITEMS], [CHARACTERS], [ENEMIES] and more! ",
-        "info": "Talk to JB to learn more about content!"
+        "info": "Talk to JB to learn more about content!",
+        "status": "open",
+        "key": "none"
     },
     "demoArmour": {
         "description": "A plain suit of armour.",
-        "info": "It is surprisingly shiny."
+        "info": "It is surprisingly shiny.",
+        "status": "open",
+        "key": "none"
     },
     "demoEnemy": {
         "description": "A fearsome [ENEMY].",
-        "info": "The [ENEMY] gnashes his teeth in your general direction."
+        "info": "The [ENEMY] gnashes his teeth in your general direction.",
+        "status": "open",
+        "key": "none"
     },
     "demoInspect": {
         "description": "A sample inspectable element.",
-        "info": "Elements highlighted in coral may be inspected to get further info."
+        "info": "Elements highlighted in coral may be inspected to get further info.",
+        "status": "open",
+        "key": "none"
     },
     "demoInteract": {
         "description": "A sample interactable element.",
         "info": "Interacting with the object reveals hidden text!",
-        "status": "open"
+        "status": "open",
+        "key": "none"
     },
     "demoItem": {
         "description": "A sample item.",
-        "info": "Pick up an item by clicking [PICK UP] on the [ACTION BAR]"
+        "info": "Pick up an item by clicking [PICK UP] on the [ACTION BAR]",
+        "status": "open",
+        "key": "none"
     },
     "demoWeapon": {
         "description": "A sample Weapon.",
-        "info": "It looks sharp."
+        "info": "It looks sharp.",
+        "status": "open",
+        "key": "none"
     },
     "door":{
         "description": "It must weigh a ton, it won't budge.",
         "info": "The door is locked.",
-        "status": "locked"
+        "status": "locked",
+        "key": "primaryKey",
+        "event": "doorEvent"
     },
     "jellyBean": {
         "description": "A sample character.",
-        "info": "Jellybean waves."
+        "info": "Jellybean waves.",
+        "status": "open",
+        "key": "none"
     },
     "primaryKey": {
         "description": "A skeleton key.",
-        "info": "I wonder what it unlocks."
+        "info": "I wonder what it unlocks.",
+        "status": "open",
+        "key": "none"
     }
 }

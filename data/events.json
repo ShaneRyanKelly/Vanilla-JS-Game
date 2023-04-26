@@ -183,6 +183,17 @@
                 }
             },
             "journal": "<p>I learned about [DIALOGUE] from JellyBean!</p>"
+        },
+        "door":{
+            "mods":{
+                "0":{
+                    "scene": "demo",
+                    "index": "door",
+                    "text": "<p>The <span id='openDoor' class='exit'>open door</span> stands before you.</p>"
+                }
+            },
+            "dialogueMods":{},
+            "journal": "<p>I opened the door to a whole new world!</p>"
         }
     }
 }
