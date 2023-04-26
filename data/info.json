@@ -54,10 +54,24 @@
         "status": "open",
         "key": "none"
     },
+    "openDoor": {
+        "description": "A door to the future.",
+        "info": "Are you ready to begin the adventure?",
+        "status": "open",
+        "key": "none",
+        "destination": "scene"
+    },
     "primaryKey": {
         "description": "A skeleton key.",
         "info": "I wonder what it unlocks.",
         "status": "open",
         "key": "none"
+    },
+    "returnDoor": {
+        "description": "Return to demo",
+        "info": "We have to go back",
+        "status": "open",
+        "key": "none",
+        "destination": "demo"
     }
 }

@@ -9,7 +9,7 @@ import party from "../data/party.json" assert {type: "json"};
 
 var currentScene = "demo";
 var currentTarget = "";
-const classTypes = [ "inspect", "interact", "item", "character", "dialogue", "enemy" ];
+const classTypes = [ "inspect", "interact", "item", "character", "dialogue", "enemy", "exit" ];
 var inventory = [];
 var journal = [];
 var selectedCharacter;
@@ -195,6 +195,7 @@ function displayJournal(){
 function displayScene(){
     var descriptions = scenes[currentScene]["description"];
     getId("textBox").innerHTML = "";
+    getId("infoBox").innerHTML = "";
     for ( var paragraph in descriptions ){
         getId("textBox").innerHTML += descriptions[paragraph];
     }
@@ -295,6 +296,7 @@ function doAction(event){
     else if (event.target.id == "pickUpButton"){
         getId("actionBar").innerHTML = "";
         pickUpItem();
+        getId("infoBox").innerHTML = "";
         triggerEvent();
     }
     else if (event.target.id == "talkButton"){
@@ -327,6 +329,11 @@ function doAction(event){
     else if (event.target.id == "useButton"){
         getId("actionBar").innerHTML = "";
         useKey();
+    }
+    else if (event.target.id == "travelButton"){
+        getId("actionBar").innerHTML = "";
+        currentScene = infos[currentTarget.id]["destination"];
+        displayScene();
     }
 }
 

@@ -189,7 +189,7 @@
                 "0":{
                     "scene": "demo",
                     "index": "door",
-                    "text": "<p>The <span id='openDoor' class='exit'>open door</span> stands before you.</p>"
+                    "text": "<p>Unlocking the door revealed an [EXIT]. An [EXIT] will allow you to travel to a new scene. The <span id='openDoor' class='exit'>open door</span> stands before you, why not [TRAVERSE] it and see where it leads?</p>"
                 }
             },
             "dialogueMods":{},

@@ -6,5 +6,12 @@
             "description": "<p>Jellybean is a new game engine designed to aid in the development of <span id='demoInspect' class='inspect'>text-based adventure role-playing games</span>!</p>",
             "demoInteract": "<p>Jellybean stories are made up of plain text and interactable elements such as this <span id='demoInteract' class='interact'>switch</span>. To interact with an element just click on its text and then click [INTERACT] in the bottom action bar.</p>"
         }
+    },
+    "scene": {
+        "description":{
+            "title": "<h1 class='title'>New Scene!</h1>",
+            "exit": "<span id='returnDoor' class='exit'>Return</button>"
+
+        }
     }
 }
