@@ -46,6 +46,15 @@
         "unlocks": "primaryDoor",
         "quantity": 0
     },
+    "potion": {
+        "id": "potion",
+        "name": "Potion",
+        "class": "consumable",
+        "effect": "Restores a small amount of HP",
+        "buyPrice": 5,
+        "sellPrice": 2,
+        "quantity": 0
+    },
     "none": {
         "id": "none",
         "name": "None",

@@ -1,5 +1,21 @@
 {
     "demo":{
+        "button01":{
+            "mods":{
+                "0":{
+                    "scene": "scene",
+                    "index": "keyInteract",
+                    "text": "<p>Remember your [PRIMARY KEY] from before? Try using it on this <span id='lock' class='interact'>LOCK</span>.</p>"
+                },
+                "1":{
+                    "scene": "demo",
+                    "index": "sceneEvent",
+                    "text": ""
+                }
+            },
+            "dialogueMods":{},
+            "journal": ""
+        },
         "demoInteract":{
             "mods":{
                 "0":{
@@ -194,6 +210,35 @@
             },
             "dialogueMods":{},
             "journal": "<p>I opened the door to a whole new world!</p>"
+        }
+    },
+    "scene": {
+        "button00":{
+            "mods":{
+                "0":{
+                    "scene": "demo",
+                    "index": "sceneEvent",
+                    "text": "<p>Triggering the [EVENT] in the second [SCENE] triggered this text to appear. I wonder what will happen if I press this <span id='button01' class='interact'>BUTTON</span>.</p>"
+                },
+                "1":{
+                    "scene": "scene",
+                    "index": "event",
+                    "text": "<p>Let me go back to the last [SCENE] to see what happened!</p>"
+                }
+            },
+            "dialogueMods":{},
+            "journal": "<p>I found out first hand that [EVENTS] can modify different [SCENES].</p>"
+        },
+        "lock":{
+            "mods":{
+                "0":{
+                    "scene": "scene",
+                    "index": "keyInteract",
+                    "text": "<p>WOAH! Unlocking the LOCK revealed this <span id='potion_00' class='item'>POTION</span> and a mysterious <span id='button02' class='interact'>BUTTON</span>.</p>"
+                }
+            },
+            "dialogueMods":{},
+            "journal": ""
         }
     }
 }

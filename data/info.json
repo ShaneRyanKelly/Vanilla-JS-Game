@@ -1,4 +1,22 @@
 {
+    "button00": {
+        "description": "A simple button.",
+        "info": "Pushing this button modifies the previous scene.",
+        "status": "open",
+        "key": "none"
+    },
+    "button01": {
+        "description": "A complicated looking button.",
+        "info": "This button has too many bells and whistles.",
+        "status": "open",
+        "key": "none"
+    },
+    "button02": {
+        "description": "A complicated looking button.",
+        "info": "This button has too many bells and whistles.",
+        "status": "open",
+        "key": "none"
+    },
     "content": {
         "description": "[SCENE] content includes [INFOS], [INTERACTS], [ITEMS], [CHARACTERS], [ENEMIES] and more! ",
         "info": "Talk to JB to learn more about content!",
@@ -54,12 +72,24 @@
         "status": "open",
         "key": "none"
     },
+    "lock": {
+        "description": "The LOCK seems to be covering some important text.",
+        "info": "Use the primary key to unlock it!",
+        "status": "locked",
+        "key": "primaryKey"
+    },
     "openDoor": {
         "description": "A door to the future.",
         "info": "Are you ready to begin the adventure?",
         "status": "open",
         "key": "none",
         "destination": "scene"
+    },
+    "potion": {
+        "description": "A potion in a blue vial.",
+        "info": "Potions restore a small amount of HP",
+        "status": "open",
+        "key": "none"
     },
     "primaryKey": {
         "description": "A skeleton key.",

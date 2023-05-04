@@ -10,6 +10,8 @@
     "scene": {
         "description":{
             "title": "<h1 class='title'>New Scene!</h1>",
+            "event": "<p>Pressing this <span id='button00' class='interact'>BUTTON</span> will modify the previous scene.</p>",
+            "keyInteract": "",
             "exit": "<span id='returnDoor' class='exit'>Return</button>"
 
         }
