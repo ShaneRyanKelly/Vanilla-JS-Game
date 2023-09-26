@@ -77,31 +77,5 @@
         "info": "Use the primary key to unlock it!",
         "status": "locked",
         "key": "primaryKey"
-    },
-    "openDoor": {
-        "description": "A door to the future.",
-        "info": "Are you ready to begin the adventure?",
-        "status": "open",
-        "key": "none",
-        "destination": "scene"
-    },
-    "potion": {
-        "description": "A potion in a blue vial.",
-        "info": "Potions restore a small amount of HP",
-        "status": "open",
-        "key": "none"
-    },
-    "primaryKey": {
-        "description": "A skeleton key.",
-        "info": "I wonder what it unlocks.",
-        "status": "open",
-        "key": "none"
-    },
-    "returnDoor": {
-        "description": "Return to demo",
-        "info": "We have to go back",
-        "status": "open",
-        "key": "none",
-        "destination": "demo"
     }
 }
